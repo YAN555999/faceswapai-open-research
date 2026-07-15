@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "1.0.0",
+  "study": "Independent Multi-Face Mapping Production Study",
+  "canonicalUrl": "https://faceswapai.com/resources/how-to-map-different-faces-in-a-group-photo",
+  "capturedAt": "2026-07-14T14:14:38.615Z",
+  "license": "CC BY 4.0",
+  "productContract": {
+    "browserMode": "independent source-to-target mapping",
+    "selectedTargetFaces": 4,
+    "maximumSelectedTargetFaces": 10,
+    "replacementPortraits": 4,
+    "paidTaskOnly": true,
+    "creditsCharged": 13,
+    "startingCredits": 30,
+    "endingCredits": 17,
+    "paidOutputIncludesTrialWatermark": false,
+    "paidOutputIncludesAccountEmail": false,
+    "scheduledFileRetentionHours": 24
+  },
+  "method": {
+    "input": "One purpose-built synthetic image containing exactly four fictional adults and no real customer identities.",
+    "detectorOrder": "Detector results were sorted left to right by x coordinate before mapping.",
+    "mappingRule": "Cyclic mapping in one task: person 2 to target 1, person 3 to target 2, person 4 to target 3, person 1 to target 4.",
+    "replacementPortraitRule": "Each replacement source is a separate JPEG cropped from the exact input around one detected face. The square crop side is 2.4 times the larger detected face dimension, clamped to the image bounds.",
+    "generationRequests": 1,
+    "submittedAt": "2026-07-14T14:14:24.470Z",
+    "statusHistory": [
+      {
+        "status": "PROCESSING",
+        "observedAt": "2026-07-14T14:14:24.710Z"
+      },
+      {
+        "status": "COMPLETED",
+        "observedAt": "2026-07-14T14:14:39.914Z"
+      }
+    ]
+  },
+  "input": {
+    "exactReproductionFile": "/datasets/multi-face-mapping-production-input-v1.png",
+    "pageOptimizedDerivative": "/research/multi-face-mapping-original-v1.avif",
+    "width": 1536,
+    "height": 1024,
+    "format": "png",
+    "bytes": 2730337,
+    "sha256": "0a954ff5546ef76ef7b16dbc741dbbd7dc6b8994b31b6f814c822382638b8111"
+  },
+  "detection": {
+    "faceCount": 4,
+    "faces": [
+      {
+        "position": 1,
+        "detectorIndex": 0,
+        "box": {
+          "x": 138,
+          "y": 276,
+          "width": 171,
+          "height": 232
+        },
+        "replacementPortrait": {
+          "crop": {
+            "left": 0,
+            "top": 114,
+            "width": 557,
+            "height": 557
+          },
+          "bytes": 108083,
+          "sha256": "544bf5930d3b50363c546c007e7d4b40205d4478c2c8b0cd5d6c0abc5b589d09"
+        }
+      },
+      {
+        "position": 2,
+        "detectorIndex": 1,
+        "box": {
+          "x": 516,
+          "y": 364,
+          "width": 160,
+          "height": 208
+        },
+        "replacementPortrait": {
+          "crop": {
+            "left": 347,
+            "top": 219,
+            "width": 499,
+            "height": 499
+          },
+          "bytes": 90656,
+          "sha256": "42bb9de623bb657245f5bf4152623b5bd25bc8bde636f49fed514ea9b9ebfe61"
+        }
+      },
+      {
+        "position": 3,
+        "detectorIndex": 2,
+        "box": {
+          "x": 863,
+          "y": 270,
+          "width": 161,
+          "height": 231
+        },
+        "replacementPortrait": {
+          "crop": {
+            "left": 667,
+            "top": 109,
+            "width": 554,
+            "height": 554
+          },
+          "bytes": 106750,
+          "sha256": "bdb52641d5eb974b922076c484fcbfdb66219168c82f3ed13bd897e013c9d2fc"
+        }
+      },
+      {
+        "position": 4,
+        "detectorIndex": 3,
+        "box": {
+          "x": 1247,
+          "y": 369,
+          "width": 164,
+          "height": 224
+        },
+        "replacementPortrait": {
+          "crop": {
+            "left": 998,
+            "top": 212,
+            "width": 538,
+            "height": 538
+          },
+          "bytes": 125291,
+          "sha256": "63e841cb7e2ddc4c30fbd896e81ad6ef909afe1d4eedb348f1980d04ad0bb52d"
+        }
+      }
+    ]
+  },
+  "mapping": [
+    {
+      "targetPosition": 1,
+      "replacementPosition": 2,
+      "targetDetectorIndex": 0,
+      "replacementDetectorIndex": 1
+    },
+    {
+      "targetPosition": 2,
+      "replacementPosition": 3,
+      "targetDetectorIndex": 1,
+      "replacementDetectorIndex": 2
+    },
+    {
+      "targetPosition": 3,
+      "replacementPosition": 4,
+      "targetDetectorIndex": 2,
+      "replacementDetectorIndex": 3
+    },
+    {
+      "targetPosition": 4,
+      "replacementPosition": 1,
+      "targetDetectorIndex": 3,
+      "replacementDetectorIndex": 0
+    }
+  ],
+  "output": {
+    "exactReproductionFile": "/datasets/multi-face-mapping-production-output-v1.png",
+    "pageOptimizedDerivative": "/research/multi-face-mapping-result-v1.avif",
+    "width": 1536,
+    "height": 1024,
+    "format": "png",
+    "bytes": 2635571,
+    "sha256": "dbef636dd7ca825c276c8bb4433969a584426ac23b1018eb472283c50519e5e6"
+  },
+  "limitations": [
+    "This is one production run on one purpose-built synthetic four-person image, not a universal quality score.",
+    "Face detection confirms returned regions, not identity accuracy or visual quality.",
+    "The proprietary upstream implementation can change after this dated capture.",
+    "Output dimensions, resemblance and edge quality are not guaranteed for other inputs."
+  ],
+  "cleanup": {
+    "queueJobRemoved": true,
+    "redisSessionRemoved": true,
+    "privateFilesRemoved": true,
+    "databaseRowsRemoved": true
+  }
+}

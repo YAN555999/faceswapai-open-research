@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this catalog or one of its datasets, cite the canonical dataset landing page and version."
+title: "FaceSwapAI Face Swap Research and Open Data Catalog"
+type: dataset
+authors:
+  - name: "FaceSwapAI Editorial"
+    website: "https://faceswapai.com/press#editorial-standards"
+version: "1.0.0"
+date-released: "2026-07-15"
+url: "https://faceswapai.com/research"
+repository-code: "https://github.com/YAN555999/faceswapai-open-research"
+license: CC-BY-4.0
+abstract: "A versioned catalog of bounded face-swap measurements and dated vendor-claim snapshots with machine-readable files, source boundaries and explicit limitations."
+keywords:
+  - face swap
+  - AI face swap
+  - image quality
+  - face detection
+  - open data

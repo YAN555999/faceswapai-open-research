@@ -1,0 +1,257 @@
+{
+  "name": "AI Face Swap Vendor-Published Claims Snapshot v1",
+  "identifier": "faceswapai-ai-face-swap-public-claims-v1.0.0",
+  "version": "1.0.0",
+  "dateObserved": "2026-07-13",
+  "datePublished": "2026-07-13",
+  "canonicalUrl": "https://faceswapai.com/datasets/ai-face-swap-public-claims-v1.json",
+  "humanReadableRecord": "https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "name": "FaceSwapAI Editorial",
+    "url": "https://faceswapai.com/about"
+  },
+  "purpose": "Normalize selected public statements on official face-swap product pages so readers can identify fields that still require direct verification.",
+  "method": {
+    "selection": "The six non-FaceSwapAI providers were the first visible product domains in a signed-out, US-English Google search for 'ai face swap' reviewed on 2026-07-13. FaceSwapAI is included for first-party disclosure and comparison context.",
+    "observation": "One named official page per provider was manually reviewed. FaceSwapAI uses its versioned first-party product-facts endpoint. Statements were paraphrased into common fields without creating an account or generation task.",
+    "normalizationRules": [
+      "A published claim is recorded as a claim, not as independently verified product behavior.",
+      "Not stated means the reviewed URL did not clearly state the field; it does not mean the feature or policy is absent.",
+      "Conflicting statements on the same reviewed page are retained instead of choosing one as correct.",
+      "Free, no sign-up, no watermark and deletion language can have provider-specific scope and definitions.",
+      "Media support records what the reviewed page presented, not every product the provider may operate."
+    ],
+    "independentGenerationTest": false,
+    "qualityRanking": false,
+    "endorsement": false
+  },
+  "fieldDefinitions": {
+    "mediaStated": "Media workflows presented on the reviewed source page.",
+    "freeAccess": "The reviewed page's free-use statement and any visible scope.",
+    "accountRequirement": "Whether the reviewed page stated that sign-up or an account is required for the claimed free workflow.",
+    "watermark": "Whether the reviewed page stated that a watermark is present or absent, including any visible scope.",
+    "taskFileRetention": "The reviewed page's statement about uploaded or generated task-file deletion, not account, billing, security or legal records.",
+    "conflicts": "Statements on the reviewed page that cannot both define one unambiguous boundary."
+  },
+  "providers": [
+    {
+      "provider": "FaceSwapAI",
+      "firstParty": true,
+      "sourceUrls": [
+        "https://faceswapai.com/product-facts-v1.json"
+      ],
+      "mediaStated": [
+        "photo",
+        "group photo",
+        "video",
+        "GIF"
+      ],
+      "freeAccess": {
+        "status": "limited_trial",
+        "summary": "One eligibility-based photo trial is available to an eligible account; it is not unlimited free generation."
+      },
+      "accountRequirement": {
+        "status": "required",
+        "summary": "Generation requires sign-in, a verified email address and consent confirmation."
+      },
+      "watermark": {
+        "status": "trial_only",
+        "summary": "The eligible photo-trial result includes FaceSwapAI.com and the complete, unmasked account email. A newly generated paid result includes neither."
+      },
+      "taskFileRetention": {
+        "status": "stated",
+        "summary": "Uploaded and generated task files are scheduled for deletion after 24 hours and may be removed earlier; upstream provider policies also apply."
+      },
+      "conflicts": [],
+      "independentlyVerified": false
+    },
+    {
+      "provider": "AIFaceSwap",
+      "firstParty": false,
+      "sourceUrls": [
+        "https://aifaceswap.io/"
+      ],
+      "mediaStated": [
+        "photo",
+        "multiple-face photo",
+        "video",
+        "GIF"
+      ],
+      "freeAccess": {
+        "status": "claimed_free",
+        "summary": "The reviewed page claims free use without a daily limit."
+      },
+      "accountRequirement": {
+        "status": "claimed_not_required",
+        "summary": "The reviewed page claims no login is required."
+      },
+      "watermark": {
+        "status": "claimed_absent",
+        "summary": "The reviewed page claims no watermark."
+      },
+      "taskFileRetention": {
+        "status": "stated",
+        "summary": "The reviewed page says files are regularly deleted after one day."
+      },
+      "conflicts": [],
+      "independentlyVerified": false
+    },
+    {
+      "provider": "Magic Hour",
+      "firstParty": false,
+      "sourceUrls": [
+        "https://magichour.ai/products/face-swap"
+      ],
+      "mediaStated": [
+        "photo",
+        "video",
+        "GIF"
+      ],
+      "freeAccess": {
+        "status": "claimed_free_for_photo",
+        "summary": "The reviewed page claims free photo face swaps."
+      },
+      "accountRequirement": {
+        "status": "claimed_not_required_for_photo",
+        "summary": "The reviewed page claims no sign-up is required for photo face swaps."
+      },
+      "watermark": {
+        "status": "claimed_absent_for_photo",
+        "summary": "The reviewed page claims no watermark on photo face swaps."
+      },
+      "taskFileRetention": {
+        "status": "stated",
+        "summary": "The reviewed page says uploads and results are retained for one day."
+      },
+      "conflicts": [],
+      "independentlyVerified": false
+    },
+    {
+      "provider": "Higgsfield",
+      "firstParty": false,
+      "sourceUrls": [
+        "https://higgsfield.ai/apps/face-swap"
+      ],
+      "mediaStated": [
+        "photo",
+        "video"
+      ],
+      "freeAccess": {
+        "status": "claimed_limited_for_image",
+        "summary": "The reviewed page claims five free image swaps per day and describes video face swap as paid."
+      },
+      "accountRequirement": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state the account requirement for the claimed free image workflow."
+      },
+      "watermark": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state trial or free-output watermark behavior."
+      },
+      "taskFileRetention": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state a task-file retention period."
+      },
+      "conflicts": [],
+      "independentlyVerified": false
+    },
+    {
+      "provider": "Remaker",
+      "firstParty": false,
+      "sourceUrls": [
+        "https://remaker.ai/face-swap-free/"
+      ],
+      "mediaStated": [
+        "photo",
+        "multiple-face photo",
+        "video",
+        "GIF"
+      ],
+      "freeAccess": {
+        "status": "claimed_free_for_photo",
+        "summary": "The reviewed page claims free photo face swaps."
+      },
+      "accountRequirement": {
+        "status": "claimed_not_required_for_photo",
+        "summary": "The reviewed page claims no sign-up is required for free photo face swaps."
+      },
+      "watermark": {
+        "status": "claimed_absent_for_photo",
+        "summary": "The reviewed page claims no watermark on free photo face swaps."
+      },
+      "taskFileRetention": {
+        "status": "conflicting",
+        "summary": "One section says history is deleted after one day, while a FAQ answer says uploaded and generated images are deleted within 48 hours."
+      },
+      "conflicts": [
+        "The reviewed page gives both a one-day and a within-48-hours deletion statement."
+      ],
+      "independentlyVerified": false
+    },
+    {
+      "provider": "Facy",
+      "firstParty": false,
+      "sourceUrls": [
+        "https://facy.ai/video-face-swap"
+      ],
+      "mediaStated": [
+        "video",
+        "multiple-face video"
+      ],
+      "freeAccess": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state a free-use boundary."
+      },
+      "accountRequirement": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state the account requirement."
+      },
+      "watermark": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state output watermark behavior."
+      },
+      "taskFileRetention": {
+        "status": "stated",
+        "summary": "The reviewed page says uploads and results are deleted after 48 hours."
+      },
+      "conflicts": [],
+      "independentlyVerified": false
+    },
+    {
+      "provider": "Pixlr",
+      "firstParty": false,
+      "sourceUrls": [
+        "https://pixlr.com/face-swap/"
+      ],
+      "mediaStated": [
+        "photo"
+      ],
+      "freeAccess": {
+        "status": "claimed_free",
+        "summary": "The reviewed page presents the photo face-swap workflow as free."
+      },
+      "accountRequirement": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state the account requirement."
+      },
+      "watermark": {
+        "status": "not_stated",
+        "summary": "The reviewed page did not clearly state output watermark behavior."
+      },
+      "taskFileRetention": {
+        "status": "stated",
+        "summary": "The reviewed page says uploaded images are promptly deleted."
+      },
+      "conflicts": [],
+      "independentlyVerified": false
+    }
+  ],
+  "limitations": [
+    "The snapshot covers one reviewed official page per provider and can miss details published elsewhere.",
+    "No non-FaceSwapAI account was created and no generation, payment, download, API, privacy-request or support-response test was performed.",
+    "The dataset does not compare output quality, speed, reliability, safety enforcement, total cost or current availability.",
+    "Vendor pages and product behavior can change after the observation date; reopen each source before relying on a field.",
+    "Inclusion is not an endorsement, and omission of another provider is not a negative assessment."
+  ]
+}

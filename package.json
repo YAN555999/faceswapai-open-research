@@ -1,0 +1,15 @@
+{
+  "name": "faceswapai-open-research",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Version-pinned public mirror and integrity checks for the FaceSwapAI research and open-data catalog.",
+  "license": "CC-BY-4.0",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/verify.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,50 @@
+name: Data correction
+description: Report a factual, source, method or limitation issue in a published research artifact.
+title: "[Data correction]: "
+labels:
+  - data-correction
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach private faces, customer uploads, account data, credentials or unpublished personal information.
+  - type: input
+    id: artifact
+    attributes:
+      label: Affected artifact
+      description: Provide the file path, field, dataset identifier or canonical page URL.
+      placeholder: data/example-v1.json, field name, or https://faceswapai.com/resources/...
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current value or problem
+      description: Quote only the minimum text needed to identify the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: State the replacement value or clarification.
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: First-party evidence URL
+      description: Link the official source or reproducible public observation supporting the correction.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - Presentation only
+        - Source or observation date
+        - Measurement or method
+        - Limitation or conclusion
+    validations:
+      required: true
