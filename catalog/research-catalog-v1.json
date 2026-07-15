@@ -1,1 +1,292 @@
-{"schemaVersion":"1.0.0","version":"1.0.0","lastUpdated":"2026-07-14","identifier":"faceswapai-research-catalog-v1.0.0","name":"FaceSwapAI Face Swap Research and Open Data Catalog","description":"A versioned catalog of reproducible face-swap measurements and dated vendor-claim snapshots with source boundaries and explicit limitations.","canonicalUrl":"https://faceswapai.com/research","publisher":{"name":"FaceSwapAI Editorial","url":"https://faceswapai.com/press#editorial-standards"},"license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"datasetCount":6,"datasets":[{"identifier":"faceswapai-independent-multi-face-mapping-v1.0.0","name":"Independent Multi-Face Mapping Production Study v1","version":"1.0.0","datePublished":"2026-07-14","dateModified":"2026-07-14","landingPage":"https://faceswapai.com/resources/how-to-map-different-faces-in-a-group-photo","download":"https://faceswapai.com/datasets/independent-multi-face-mapping-study-v1.json","encodingFormat":"application/json","description":"A reproducible four-person production run recording detector boxes, separate replacement crops, cyclic source-to-target mapping, task states, credit use, hashes, dimensions and cleanup.","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["AI face swap","multiple face swap","group photo","source-to-target mapping","production study"],"measurementTechnique":"One dated production task on one purpose-built synthetic four-adult input, with four expanded replacement portraits and a documented cyclic mapping","variables":["input and output SHA-256","image dimensions","detected face boxes","replacement crop boxes","mapping order","task states","credits charged","cleanup state"],"isBasedOn":["https://faceswapai.com/datasets/multi-face-mapping-production-input-v1.png","https://faceswapai.com/datasets/multi-face-mapping-production-output-v1.png","https://faceswapai.com/product-facts-v1.json"]},{"identifier":"faceswapai-ai-face-swap-public-claims-v1.0.0","name":"AI Face Swap Vendor-Published Claims Snapshot v1","version":"1.0.0","datePublished":"2026-07-14","dateModified":"2026-07-14","landingPage":"https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools","download":"https://faceswapai.com/datasets/ai-face-swap-public-claims-v1.json","encodingFormat":"application/json","description":"A dated, normalized snapshot of free access, account, watermark, media-support and retention statements on seven official face-swap product pages.","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["AI face swap tools","vendor claims","account requirements","watermark","retention","2026"],"measurementTechnique":"Manual review and normalization of vendor-published product-page statements observed on 2026-07-13; no generation or output-quality test","variables":["provider","source URL","observation date","published media support","free-access claim","account claim","watermark claim","retention claim","conflicts","not-stated fields"],"isBasedOn":["https://faceswapai.com/product-facts-v1.json","https://aifaceswap.io/","https://magichour.ai/products/face-swap","https://higgsfield.ai/apps/face-swap","https://remaker.ai/face-swap-free/","https://facy.ai/video-face-swap","https://pixlr.com/face-swap/"]},{"identifier":"faceswapai-readiness-benchmark-v1.0.0","name":"FaceSwapAI Public Reference Frame Readiness Benchmark","version":"1.0.0","datePublished":"2026-07-13","dateModified":"2026-07-13","landingPage":"https://faceswapai.com/resources/face-swap-input-readiness-benchmark","download":"https://faceswapai.com/readiness-benchmark-v1.json","encodingFormat":"application/json","description":"A reproducible audit of eight FaceSwapAI reference frames. It describes observable input properties and does not measure model accuracy or guarantee output quality.","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["face swap input","readiness benchmark","image quality","face detection","reference frames"],"measurementTechnique":"FaceSwapAI Readiness Score v1.0.0 public reference-frame audit","variables":["width","height","bytes","brightness","contrast","detail","faceCount","targetReadiness score"],"isBasedOn":["https://faceswapai.com/readiness-score-v1.json","https://faceswapai.com/face-swap-readiness-methodology"]},{"identifier":"faceswapai-input-degradation-study-v1.0.0","name":"FaceSwapAI Controlled Face-Swap Input Degradation Study","version":"1.0.0","datePublished":"2026-07-13","dateModified":"2026-07-13","landingPage":"https://faceswapai.com/resources/face-swap-input-degradation-study","download":"https://faceswapai.com/input-degradation-study-v1.json","encodingFormat":"application/json","description":"A controlled test of how blur, low resolution, low light, highlight clipping and JPEG block compression change observable preflight measurements while face detection remains successful.","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["face swap input","image degradation","blur","low light","JPEG compression","face detection"],"measurementTechnique":"Controlled single-variable image degradation measured with FaceSwapAI Readiness Score v1.1.0 and the production public face detector","variables":["width","height","bytes","brightness","contrast","shadowClipping","highlightClipping","faceCount","faceSharpness","jpegBlockiness ratio","source readiness score"],"isBasedOn":["https://faceswapai.com/readiness-score-v1.json","https://faceswapai.com/face-swap-readiness-methodology"]},{"identifier":"faceswapai-group-face-size-detection-study-v1.0.0","name":"FaceSwapAI Controlled Group Photo Face-Size Detection Study","version":"1.0.0","datePublished":"2026-07-13","dateModified":"2026-07-13","landingPage":"https://faceswapai.com/resources/group-photo-face-size-detection-study","download":"https://faceswapai.com/group-face-size-study-v1.json","encodingFormat":"application/json","description":"A controlled observation of how many faces the FaceSwapAI production detector returns when the same four-person group photo is resized from 1200 to 32 pixels wide.","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["group photo","face size","face detection","multiple face swap","image resolution"],"measurementTechnique":"Controlled native-width resize series measured with the FaceSwapAI production face detector v1.0","variables":["native width","native height","file bytes","SHA-256","expected face count","returned face count","detection rate","face bounding boxes","smallest returned box width"],"isBasedOn":["https://faceswapai.com/demo/multi-a.jpg","https://faceswapai.com/face-swap-readiness-methodology"]},{"identifier":"faceswapai-video-continuity-study-v1.0.0","name":"FaceSwapAI Controlled Production Video Face-Swap Study","version":"1.0.0","datePublished":"2026-07-14","dateModified":"2026-07-14","landingPage":"https://faceswapai.com/resources/video-face-swap-continuity-study","download":"https://faceswapai.com/video-continuity-study-v1.json","encodingFormat":"application/json","description":"A controlled, inspectable production run measuring container preservation, sampled face detection, face-box alignment and regional pixel differences across one synthetic 10-second video face swap.","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["video face swap","frame continuity","face detection","face-box alignment","production study"],"measurementTechnique":"Matched-frame production video audit using ffprobe container data, the FaceSwapAI production public detector v1.0, face-box overlap and decoded regional RGB differences","variables":["duration","frame rate","frame count","dimensions","file bytes","SHA-256","sample timestamp","face count","face bounding box","face-box IoU","box-center displacement","face sharpness","regional RGB mean absolute difference"],"isBasedOn":["https://faceswapai.com/research/video-continuity-input-v1.mp4","https://faceswapai.com/research/video-continuity-output-v1.mp4","https://faceswapai.com/video-swap"]}]}
+{
+  "schemaVersion": "1.0.0",
+  "version": "1.1.0",
+  "lastUpdated": "2026-07-15",
+  "identifier": "faceswapai-research-catalog-v1.1.0",
+  "name": "FaceSwapAI Face Swap Research and Open Data Catalog",
+  "description": "A versioned catalog of reproducible face-swap measurements and dated vendor-claim snapshots with source boundaries and explicit limitations.",
+  "canonicalUrl": "https://faceswapai.com/research",
+  "publisher": {
+    "name": "FaceSwapAI Editorial",
+    "url": "https://faceswapai.com/press#editorial-standards"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "datasetCount": 7,
+  "datasets": [
+    {
+      "identifier": "faceswapai-independent-multi-face-mapping-v1.0.0",
+      "name": "Independent Multi-Face Mapping Production Study v1",
+      "version": "1.0.0",
+      "datePublished": "2026-07-14",
+      "dateModified": "2026-07-14",
+      "landingPage": "https://faceswapai.com/resources/how-to-map-different-faces-in-a-group-photo",
+      "download": "https://faceswapai.com/datasets/independent-multi-face-mapping-study-v1.json",
+      "encodingFormat": "application/json",
+      "description": "A reproducible four-person production run recording detector boxes, separate replacement crops, cyclic source-to-target mapping, task states, credit use, hashes, dimensions and cleanup.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "AI face swap",
+        "multiple face swap",
+        "group photo",
+        "source-to-target mapping",
+        "production study"
+      ],
+      "measurementTechnique": "One dated production task on one purpose-built synthetic four-adult input, with four expanded replacement portraits and a documented cyclic mapping",
+      "variables": [
+        "input and output SHA-256",
+        "image dimensions",
+        "detected face boxes",
+        "replacement crop boxes",
+        "mapping order",
+        "task states",
+        "credits charged",
+        "cleanup state"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/datasets/multi-face-mapping-production-input-v1.png",
+        "https://faceswapai.com/datasets/multi-face-mapping-production-output-v1.png",
+        "https://faceswapai.com/product-facts-v1.json"
+      ]
+    },
+    {
+      "identifier": "faceswapai-ai-face-swap-public-claims-v1.0.0",
+      "name": "AI Face Swap Vendor-Published Claims Snapshot v1",
+      "version": "1.0.0",
+      "datePublished": "2026-07-14",
+      "dateModified": "2026-07-14",
+      "landingPage": "https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools",
+      "download": "https://faceswapai.com/datasets/ai-face-swap-public-claims-v1.json",
+      "encodingFormat": "application/json",
+      "description": "A dated, normalized snapshot of free access, account, watermark, media-support and retention statements on seven official face-swap product pages.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "AI face swap tools",
+        "vendor claims",
+        "account requirements",
+        "watermark",
+        "retention",
+        "2026"
+      ],
+      "measurementTechnique": "Manual review and normalization of vendor-published product-page statements observed on 2026-07-13; no generation or output-quality test",
+      "variables": [
+        "provider",
+        "source URL",
+        "observation date",
+        "published media support",
+        "free-access claim",
+        "account claim",
+        "watermark claim",
+        "retention claim",
+        "conflicts",
+        "not-stated fields"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/product-facts-v1.json",
+        "https://aifaceswap.io/",
+        "https://magichour.ai/products/face-swap",
+        "https://higgsfield.ai/apps/face-swap",
+        "https://remaker.ai/face-swap-free/",
+        "https://facy.ai/video-face-swap",
+        "https://pixlr.com/face-swap/"
+      ]
+    },
+    {
+      "identifier": "faceswapai-photo-pose-study-v1.0.0",
+      "name": "FaceSwapAI Controlled Photo Face-Swap Pose Study",
+      "version": "1.0.0",
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-07-15",
+      "landingPage": "https://faceswapai.com/resources/photo-face-swap-pose-study",
+      "download": "https://faceswapai.com/datasets/photo-pose-study-v1.json",
+      "encodingFormat": "application/json",
+      "description": "Four dated paid production photo face swaps from one synthetic source identity into neutral, left-turn, blink and right-turn target states, with exact files, hashes, detector boxes and regional pixel measurements.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "photo face swap",
+        "pose preservation",
+        "expression preservation",
+        "face-box alignment",
+        "production study"
+      ],
+      "measurementTechnique": "Four separate paid FaceSwapAI production image tasks measured with the production public detector logic, face-box overlap, center displacement, face-region sharpness and target-output regional RGB differences",
+      "variables": [
+        "input and output SHA-256",
+        "task states and credits charged",
+        "image dimensions and file bytes",
+        "target and output face count",
+        "face bounding boxes and intersection over union",
+        "face-box center displacement",
+        "face-region sharpness",
+        "face-region and outside-region RGB mean absolute difference",
+        "cleanup state"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/research/video-continuity-source-v1.jpg",
+        "https://faceswapai.com/research/video-continuity-target-v1.jpg",
+        "https://faceswapai.com/datasets/photo-pose-output-neutral-v1.png",
+        "https://faceswapai.com/research/video-continuity-target-left-v1.jpg",
+        "https://faceswapai.com/datasets/photo-pose-output-left-turn-v1.png",
+        "https://faceswapai.com/research/video-continuity-target-blink-v1.jpg",
+        "https://faceswapai.com/datasets/photo-pose-output-blink-v1.png",
+        "https://faceswapai.com/research/video-continuity-target-right-v1.jpg",
+        "https://faceswapai.com/datasets/photo-pose-output-right-turn-v1.png",
+        "https://faceswapai.com/product-facts-v1.json"
+      ]
+    },
+    {
+      "identifier": "faceswapai-readiness-benchmark-v1.0.0",
+      "name": "FaceSwapAI Public Reference Frame Readiness Benchmark",
+      "version": "1.0.0",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "landingPage": "https://faceswapai.com/resources/face-swap-input-readiness-benchmark",
+      "download": "https://faceswapai.com/readiness-benchmark-v1.json",
+      "encodingFormat": "application/json",
+      "description": "A reproducible audit of eight FaceSwapAI reference frames. It describes observable input properties and does not measure model accuracy or guarantee output quality.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "face swap input",
+        "readiness benchmark",
+        "image quality",
+        "face detection",
+        "reference frames"
+      ],
+      "measurementTechnique": "FaceSwapAI Readiness Score v1.0.0 public reference-frame audit",
+      "variables": [
+        "width",
+        "height",
+        "bytes",
+        "brightness",
+        "contrast",
+        "detail",
+        "faceCount",
+        "targetReadiness score"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/readiness-score-v1.json",
+        "https://faceswapai.com/face-swap-readiness-methodology"
+      ]
+    },
+    {
+      "identifier": "faceswapai-input-degradation-study-v1.0.0",
+      "name": "FaceSwapAI Controlled Face-Swap Input Degradation Study",
+      "version": "1.0.0",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "landingPage": "https://faceswapai.com/resources/face-swap-input-degradation-study",
+      "download": "https://faceswapai.com/input-degradation-study-v1.json",
+      "encodingFormat": "application/json",
+      "description": "A controlled test of how blur, low resolution, low light, highlight clipping and JPEG block compression change observable preflight measurements while face detection remains successful.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "face swap input",
+        "image degradation",
+        "blur",
+        "low light",
+        "JPEG compression",
+        "face detection"
+      ],
+      "measurementTechnique": "Controlled single-variable image degradation measured with FaceSwapAI Readiness Score v1.1.0 and the production public face detector",
+      "variables": [
+        "width",
+        "height",
+        "bytes",
+        "brightness",
+        "contrast",
+        "shadowClipping",
+        "highlightClipping",
+        "faceCount",
+        "faceSharpness",
+        "jpegBlockiness ratio",
+        "source readiness score"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/readiness-score-v1.json",
+        "https://faceswapai.com/face-swap-readiness-methodology"
+      ]
+    },
+    {
+      "identifier": "faceswapai-group-face-size-detection-study-v1.0.0",
+      "name": "FaceSwapAI Controlled Group Photo Face-Size Detection Study",
+      "version": "1.0.0",
+      "datePublished": "2026-07-13",
+      "dateModified": "2026-07-13",
+      "landingPage": "https://faceswapai.com/resources/group-photo-face-size-detection-study",
+      "download": "https://faceswapai.com/group-face-size-study-v1.json",
+      "encodingFormat": "application/json",
+      "description": "A controlled observation of how many faces the FaceSwapAI production detector returns when the same four-person group photo is resized from 1200 to 32 pixels wide.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "group photo",
+        "face size",
+        "face detection",
+        "multiple face swap",
+        "image resolution"
+      ],
+      "measurementTechnique": "Controlled native-width resize series measured with the FaceSwapAI production face detector v1.0",
+      "variables": [
+        "native width",
+        "native height",
+        "file bytes",
+        "SHA-256",
+        "expected face count",
+        "returned face count",
+        "detection rate",
+        "face bounding boxes",
+        "smallest returned box width"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/demo/multi-a.jpg",
+        "https://faceswapai.com/face-swap-readiness-methodology"
+      ]
+    },
+    {
+      "identifier": "faceswapai-video-continuity-study-v1.0.0",
+      "name": "FaceSwapAI Controlled Production Video Face-Swap Study",
+      "version": "1.0.0",
+      "datePublished": "2026-07-14",
+      "dateModified": "2026-07-14",
+      "landingPage": "https://faceswapai.com/resources/video-face-swap-continuity-study",
+      "download": "https://faceswapai.com/video-continuity-study-v1.json",
+      "encodingFormat": "application/json",
+      "description": "A controlled, inspectable production run measuring container preservation, sampled face detection, face-box alignment and regional pixel differences across one synthetic 10-second video face swap.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "video face swap",
+        "frame continuity",
+        "face detection",
+        "face-box alignment",
+        "production study"
+      ],
+      "measurementTechnique": "Matched-frame production video audit using ffprobe container data, the FaceSwapAI production public detector v1.0, face-box overlap and decoded regional RGB differences",
+      "variables": [
+        "duration",
+        "frame rate",
+        "frame count",
+        "dimensions",
+        "file bytes",
+        "SHA-256",
+        "sample timestamp",
+        "face count",
+        "face bounding box",
+        "face-box IoU",
+        "box-center displacement",
+        "face sharpness",
+        "regional RGB mean absolute difference"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/research/video-continuity-input-v1.mp4",
+        "https://faceswapai.com/research/video-continuity-output-v1.mp4",
+        "https://faceswapai.com/video-swap"
+      ]
+    }
+  ]
+}

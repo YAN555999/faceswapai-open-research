@@ -2,8 +2,8 @@
   "profile": "data-package",
   "name": "faceswapai-open-research",
   "title": "FaceSwapAI Face Swap Research and Open Data Catalog",
-  "description": "A version-pinned mirror of six bounded face-swap measurement and public-claim datasets.",
-  "version": "1.0.0",
+  "description": "A version-pinned mirror of seven bounded face-swap measurement and public-claim datasets.",
+  "version": "1.1.0",
   "created": "2026-07-15",
   "homepage": "https://faceswapai.com/research",
   "licenses": [
@@ -70,20 +70,28 @@
       "hash": "sha256:e73ecc30c700b95246fa56977e6e596eb685035a16a0b19d72e9f14e76095e8c"
     },
     {
+      "name": "photo-pose-study-v1",
+      "path": "data/photo-pose-study-v1.json",
+      "format": "json",
+      "mediatype": "application/json",
+      "bytes": 14073,
+      "hash": "sha256:c9f54da3e523bda6dca106a2ba4d319c1d12deb48af7c9c8f8161e8456c388dc"
+    },
+    {
       "name": "research-catalog-v1-json",
       "path": "catalog/research-catalog-v1.json",
       "format": "json",
       "mediatype": "application/json",
-      "bytes": 8209,
-      "hash": "sha256:54bcdd74ca8e6088feb20e585c5e82b8d279ee087f5f649e65d7730a9843e2cd"
+      "bytes": 12569,
+      "hash": "sha256:1295e25db7c81d9162bf73f3c5b6cc1dda394062938850d8412c05e54767581c"
     },
     {
       "name": "research-catalog-v1-csv",
       "path": "catalog/research-catalog-v1.csv",
       "format": "csv",
       "mediatype": "text/csv",
-      "bytes": 5372,
-      "hash": "sha256:295bbf4c998f181d1ed0e4201a0cbbb39a4292da7c44013a18a85a1090e68f4e"
+      "bytes": 6959,
+      "hash": "sha256:6cfdddad6a536c66bc009c8e91b7e2e2120b5d9808c5f342fda57f6a09b43dd5"
     }
   ]
 }

@@ -1,0 +1,421 @@
+{
+  "schemaVersion": "1.0.0",
+  "name": "FaceSwapAI Controlled Photo Face-Swap Pose Study",
+  "version": "1.0.0",
+  "status": "published",
+  "published": "2026-07-15",
+  "modified": "2026-07-15",
+  "dataLicense": "https://creativecommons.org/licenses/by/4.0/",
+  "webpage": "https://faceswapai.com/resources/photo-face-swap-pose-study",
+  "dataset": "https://faceswapai.com/datasets/photo-pose-study-v1.json",
+  "visualization": "/research/photo-pose-study-v1.jpg",
+  "purpose": "A controlled, inspectable production study recording four paid photo face swaps from one synthetic source identity into four target pose or expression states.",
+  "productContract": {
+    "route": "/api/ai-tasks",
+    "generationRequests": 4,
+    "creditsPerTask": 13,
+    "creditsCharged": 52,
+    "startingCredits": 80,
+    "endingCredits": 28,
+    "paidOutputIncludesTrialWatermark": false,
+    "paidOutputIncludesAccountEmail": false,
+    "scheduledFileRetentionHours": 24
+  },
+  "design": {
+    "identityBoundary": "Both adults are purpose-built synthetic identities. No customer media, real public figure or face-recognition identity label is used.",
+    "sourcePortrait": {
+      "asset": "/research/video-continuity-source-v1.jpg",
+      "width": 1024,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 157351,
+      "sha256": "5f6aa1a771c4940ed053d2dce3932f5c360840511e80893e72b507c5eaa05b59",
+      "faceCount": 1,
+      "faceBox": {
+        "x": 262,
+        "y": 206,
+        "width": 470,
+        "height": 620
+      },
+      "faceSharpness": 358.9
+    },
+    "controlledVariable": "The source identity is fixed. The target adult, background, dimensions and construction family are fixed while the target state changes among neutral, left turn, blink and right turn.",
+    "productionBoundary": "Each state was submitted as a separate paid task through the live FaceSwapAI image route. The public task response does not identify which configured upstream provider completed an individual task."
+  },
+  "measurement": {
+    "capturedAt": "2026-07-15T05:38:54.455Z",
+    "faceDetection": "FaceSwapAI production public detector v1.0 logic; count and bounding boxes only, with no crops, embeddings or identity comparison retained.",
+    "faceBoxIoU": "Intersection over union between the target and output face boxes for the same state.",
+    "centerDisplacement": "Euclidean distance between target and output face-box centers, in pixels and as a share of the target face-box diagonal.",
+    "faceSharpness": "Variance of a four-neighbor luminance Laplacian inside each face box plus 12% padding, normalized to 160 by 160 pixels.",
+    "luminance": "Whole-image metrics after reducing the longest side to 360 pixels; brightness uses 0.2126 red + 0.7152 green + 0.0722 blue.",
+    "pixelDifference": "Mean absolute RGB difference between the target and output. The face region is the union of both face boxes after 20% padding; all remaining pixels form the outside region.",
+    "changedPixelThreshold": "A pixel is counted as changed when mean absolute RGB difference is at least 12 on an 8-bit channel scale."
+  },
+  "summary": {
+    "completedTasks": 4,
+    "targetDetectedSamples": 4,
+    "outputDetectedSamples": 4,
+    "targetAndOutputDimensionsMatch": true,
+    "averageFaceBoxIoU": 0.9881,
+    "averageCenterDisplacementPixels": 0.53,
+    "averageFaceRegionRgbMae": 3.26,
+    "averageOutsideRegionRgbMae": 0.02,
+    "averageFaceToOutsideMaeRatio": 209.39,
+    "averageTargetFaceSharpness": 308.5,
+    "averageOutputFaceSharpness": 245.4
+  },
+  "limitations": [
+    "This is one synthetic source identity, one synthetic target identity, four controlled states and one dated production run per state. It is not a population benchmark, provider leaderboard or generation success rate.",
+    "Face detection and box overlap show that a detector returned a similarly located face. They do not measure identity fidelity, expression accuracy, attractiveness or perceived realism.",
+    "Pixel differences show where target pixels changed. They do not establish whether an identity transfer is aesthetically correct.",
+    "The four target states are purpose-built still images rather than independent photographs captured from natural motion.",
+    "The production provider, queue and model behavior can change. A future run requires a new capture date and dataset version rather than silent replacement.",
+    "Inspect the exact target and output files at full resolution before drawing a visual conclusion; this dataset intentionally publishes no universal quality score."
+  ],
+  "samples": [
+    {
+      "id": "neutral",
+      "label": "Neutral, front-facing target",
+      "state": "neutral",
+      "taskId": "03ae5a0f-f66a-4f76-a45a-89488af37fc0",
+      "submittedAt": "2026-07-15T05:38:17.050Z",
+      "completedAt": "2026-07-15T05:38:24.760Z",
+      "statusHistory": [
+        {
+          "status": "PENDING",
+          "observedAt": "2026-07-15T05:38:17.239Z"
+        },
+        {
+          "status": "PROCESSING",
+          "observedAt": "2026-07-15T05:38:20.292Z"
+        },
+        {
+          "status": "COMPLETED",
+          "observedAt": "2026-07-15T05:38:26.380Z"
+        }
+      ],
+      "faceBoxIoU": 0.9913,
+      "faceBoxCenterDisplacement": {
+        "pixels": 0.5,
+        "targetFaceDiagonalShare": 0.001
+      },
+      "pixelDifference": {
+        "comparisonRegion": {
+          "x": 452,
+          "y": 49,
+          "width": 395,
+          "height": 543
+        },
+        "regionPixelShare": 0.2327,
+        "faceRegionRgbMae": 3.18,
+        "outsideRegionRgbMae": 0.03,
+        "faceToOutsideMaeRatio": 94.34,
+        "faceRegionChangedPixelRate": 0.0593,
+        "outsideRegionChangedPixelRate": 0
+      },
+      "target": {
+        "asset": "/research/video-continuity-target-v1.jpg",
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg",
+        "bytes": 90367,
+        "sha256": "63c09dbb71e930e48d2cf7d8075a7fbfe0c475c76e1b982c873b9f808a623f32",
+        "luminance": {
+          "brightness": 43.9,
+          "contrast": 39.7,
+          "detail": 2.1,
+          "shadowClipping": 0.9,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 509,
+          "y": 127,
+          "width": 280,
+          "height": 387
+        },
+        "faceSharpness": 333.5
+      },
+      "output": {
+        "asset": "/datasets/photo-pose-output-neutral-v1.png",
+        "width": 1280,
+        "height": 720,
+        "format": "png",
+        "bytes": 686653,
+        "sha256": "1ba3d918c6c3e6f660dad8ee8edb1317ca87195ce344e36995bcf17379e0b802",
+        "luminance": {
+          "brightness": 43.8,
+          "contrast": 39.4,
+          "detail": 2,
+          "shadowClipping": 1,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 509,
+          "y": 128,
+          "width": 281,
+          "height": 385
+        },
+        "faceSharpness": 263.4
+      }
+    },
+    {
+      "id": "left-turn",
+      "label": "Left head turn",
+      "state": "left turn",
+      "taskId": "32eb7eea-f3b1-46de-a8a6-cd301045ef61",
+      "submittedAt": "2026-07-15T05:38:27.294Z",
+      "completedAt": "2026-07-15T05:38:34.697Z",
+      "statusHistory": [
+        {
+          "status": "PROCESSING",
+          "observedAt": "2026-07-15T05:38:27.687Z"
+        },
+        {
+          "status": "COMPLETED",
+          "observedAt": "2026-07-15T05:38:36.795Z"
+        }
+      ],
+      "faceBoxIoU": 0.9858,
+      "faceBoxCenterDisplacement": {
+        "pixels": 0,
+        "targetFaceDiagonalShare": 0
+      },
+      "pixelDifference": {
+        "comparisonRegion": {
+          "x": 467,
+          "y": 52,
+          "width": 395,
+          "height": 529
+        },
+        "regionPixelShare": 0.2267,
+        "faceRegionRgbMae": 3.16,
+        "outsideRegionRgbMae": 0,
+        "faceToOutsideMaeRatio": 315.7,
+        "faceRegionChangedPixelRate": 0.0613,
+        "outsideRegionChangedPixelRate": 0
+      },
+      "target": {
+        "asset": "/research/video-continuity-target-left-v1.jpg",
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg",
+        "bytes": 92182,
+        "sha256": "bae93c8603325392ef99987b545a14e394b4834b48d2c57a84736b3e54f17d7e",
+        "luminance": {
+          "brightness": 43.4,
+          "contrast": 39.9,
+          "detail": 2.1,
+          "shadowClipping": 1.2,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 526,
+          "y": 128,
+          "width": 277,
+          "height": 377
+        },
+        "faceSharpness": 316.4
+      },
+      "output": {
+        "asset": "/datasets/photo-pose-output-left-turn-v1.png",
+        "width": 1280,
+        "height": 720,
+        "format": "png",
+        "bytes": 719493,
+        "sha256": "3b113b9a1f6f5315b19eff4add2daa581a8aa2438fa71fde30175cf43afa9252",
+        "luminance": {
+          "brightness": 43.3,
+          "contrast": 39.7,
+          "detail": 2.1,
+          "shadowClipping": 1.3,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 524,
+          "y": 128,
+          "width": 281,
+          "height": 377
+        },
+        "faceSharpness": 251.9
+      }
+    },
+    {
+      "id": "blink",
+      "label": "Blink expression",
+      "state": "blink",
+      "taskId": "e71a5b28-ef64-4c40-ab15-aa13a39fa4a5",
+      "submittedAt": "2026-07-15T05:38:37.394Z",
+      "completedAt": "2026-07-15T05:38:44.557Z",
+      "statusHistory": [
+        {
+          "status": "PROCESSING",
+          "observedAt": "2026-07-15T05:38:37.537Z"
+        },
+        {
+          "status": "COMPLETED",
+          "observedAt": "2026-07-15T05:38:46.633Z"
+        }
+      ],
+      "faceBoxIoU": 0.9912,
+      "faceBoxCenterDisplacement": {
+        "pixels": 1.12,
+        "targetFaceDiagonalShare": 0.0024
+      },
+      "pixelDifference": {
+        "comparisonRegion": {
+          "x": 455,
+          "y": 52,
+          "width": 388,
+          "height": 538
+        },
+        "regionPixelShare": 0.2265,
+        "faceRegionRgbMae": 3.46,
+        "outsideRegionRgbMae": 0.03,
+        "faceToOutsideMaeRatio": 102.79,
+        "faceRegionChangedPixelRate": 0.0728,
+        "outsideRegionChangedPixelRate": 0.0001
+      },
+      "target": {
+        "asset": "/research/video-continuity-target-blink-v1.jpg",
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg",
+        "bytes": 94320,
+        "sha256": "3c0e1b2b6c5340d972d727859541333e546e2d4cb5a7dd05e71303bf73bbc635",
+        "luminance": {
+          "brightness": 44.1,
+          "contrast": 40.3,
+          "detail": 2.2,
+          "shadowClipping": 1.1,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 512,
+          "y": 129,
+          "width": 275,
+          "height": 384
+        },
+        "faceSharpness": 266
+      },
+      "output": {
+        "asset": "/datasets/photo-pose-output-blink-v1.png",
+        "width": 1280,
+        "height": 720,
+        "format": "png",
+        "bytes": 732114,
+        "sha256": "a299456bce7470fd2a8b9d82ba192e892440a96947f5a3b6dc1837a233b61fa9",
+        "luminance": {
+          "brightness": 43.9,
+          "contrast": 39.9,
+          "detail": 2.2,
+          "shadowClipping": 1.2,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 511,
+          "y": 131,
+          "width": 276,
+          "height": 382
+        },
+        "faceSharpness": 213.9
+      }
+    },
+    {
+      "id": "right-turn",
+      "label": "Right head turn",
+      "state": "right turn",
+      "taskId": "427b6636-2dc7-4461-9207-5e80d9b45c4e",
+      "submittedAt": "2026-07-15T05:38:47.224Z",
+      "completedAt": "2026-07-15T05:38:54.455Z",
+      "statusHistory": [
+        {
+          "status": "PROCESSING",
+          "observedAt": "2026-07-15T05:38:47.348Z"
+        },
+        {
+          "status": "COMPLETED",
+          "observedAt": "2026-07-15T05:38:56.488Z"
+        }
+      ],
+      "faceBoxIoU": 0.9842,
+      "faceBoxCenterDisplacement": {
+        "pixels": 0.5,
+        "targetFaceDiagonalShare": 0.0011
+      },
+      "pixelDifference": {
+        "comparisonRegion": {
+          "x": 475,
+          "y": 49,
+          "width": 391,
+          "height": 542
+        },
+        "regionPixelShare": 0.23,
+        "faceRegionRgbMae": 3.25,
+        "outsideRegionRgbMae": 0.01,
+        "faceToOutsideMaeRatio": 324.71,
+        "faceRegionChangedPixelRate": 0.0644,
+        "outsideRegionChangedPixelRate": 0
+      },
+      "target": {
+        "asset": "/research/video-continuity-target-right-v1.jpg",
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg",
+        "bytes": 93738,
+        "sha256": "d0852d61b96edc80c5e437c59925964b5a61d2e4d65fddabddb4ea4abf9e72c2",
+        "luminance": {
+          "brightness": 43.5,
+          "contrast": 39.3,
+          "detail": 2.1,
+          "shadowClipping": 1.6,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 532,
+          "y": 127,
+          "width": 276,
+          "height": 386
+        },
+        "faceSharpness": 318.1
+      },
+      "output": {
+        "asset": "/datasets/photo-pose-output-right-turn-v1.png",
+        "width": 1280,
+        "height": 720,
+        "format": "png",
+        "bytes": 728177,
+        "sha256": "bcd1dd933087dae26ceab18e564a51b8abe0345549fa2d73b9a36d7ad6bef481",
+        "luminance": {
+          "brightness": 43.5,
+          "contrast": 39.1,
+          "detail": 2.1,
+          "shadowClipping": 1.7,
+          "highlightClipping": 0
+        },
+        "faceCount": 1,
+        "faceBox": {
+          "x": 531,
+          "y": 128,
+          "width": 279,
+          "height": 384
+        },
+        "faceSharpness": 252.4
+      }
+    }
+  ],
+  "cleanup": {
+    "queueJobsRemoved": 4,
+    "redisSessionRemoved": true,
+    "privateFilesRemoved": true,
+    "providerDownloadsRemoved": 4,
+    "databaseRowsRemoved": true
+  }
+}

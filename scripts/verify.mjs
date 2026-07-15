@@ -8,7 +8,7 @@ const readJson = async (path) => JSON.parse(await readText(path));
 const sha256 = (buffer) => createHash('sha256').update(buffer).digest('hex');
 
 const checksumLines = (await readText('SHA256SUMS')).trim().split('\n');
-assert.ok(checksumLines.length >= 11, 'SHA256SUMS must cover the complete release surface');
+assert.ok(checksumLines.length >= 12, 'SHA256SUMS must cover the complete release surface');
 
 for (const line of checksumLines) {
   const match = line.match(/^([a-f0-9]{64})  (.+)$/);
@@ -19,13 +19,13 @@ for (const line of checksumLines) {
 }
 
 const catalog = await readJson('catalog/research-catalog-v1.json');
-assert.equal(catalog.version, '1.0.0');
-assert.equal(catalog.datasetCount, 6);
-assert.equal(catalog.datasets.length, 6);
+assert.equal(catalog.version, '1.1.0');
+assert.equal(catalog.datasetCount, 7);
+assert.equal(catalog.datasets.length, 7);
 assert.equal(catalog.canonicalUrl, 'https://faceswapai.com/research');
 
-const manifest = await readJson('manifest-v1.0.0.json');
-assert.equal(manifest.release, 'v1.0.0');
+const manifest = await readJson('manifest-v1.1.0.json');
+assert.equal(manifest.release, 'v1.1.0');
 assert.equal(manifest.artifactCount, manifest.artifacts.length);
 
 for (const artifact of manifest.artifacts) {
@@ -38,8 +38,8 @@ for (const artifact of manifest.artifacts) {
 }
 
 const dataPackage = await readJson('datapackage.json');
-assert.equal(dataPackage.version, '1.0.0');
-assert.equal(dataPackage.resources.length, 8);
+assert.equal(dataPackage.version, '1.1.0');
+assert.equal(dataPackage.resources.length, 9);
 
 for (const resource of dataPackage.resources) {
   const file = new URL(resource.path, root);
@@ -52,6 +52,7 @@ for (const resource of dataPackage.resources) {
 const expectedIdentifiers = new Set([
   'faceswapai-independent-multi-face-mapping-v1.0.0',
   'faceswapai-ai-face-swap-public-claims-v1.0.0',
+  'faceswapai-photo-pose-study-v1.0.0',
   'faceswapai-readiness-benchmark-v1.0.0',
   'faceswapai-input-degradation-study-v1.0.0',
   'faceswapai-group-face-size-detection-study-v1.0.0',

@@ -10,7 +10,7 @@ a public correction history.
 - Canonical catalog: <https://faceswapai.com/research>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
-- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.0.0>
+- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.1.0>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
 ## Included datasets
@@ -19,6 +19,7 @@ a public correction history.
 | --- | --- | --- | --- |
 | Independent Multi-Face Mapping Production Study v1 | One dated production run on one purpose-built synthetic four-adult image | [Method and limitations](https://faceswapai.com/resources/how-to-map-different-faces-in-a-group-photo) | [`data/independent-multi-face-mapping-study-v1.json`](data/independent-multi-face-mapping-study-v1.json) |
 | AI Face Swap Vendor-Published Claims Snapshot v1 | Normalized statements observed on seven official product pages; not an output-quality test | [Sources and field definitions](https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools) | [`data/ai-face-swap-public-claims-v1.json`](data/ai-face-swap-public-claims-v1.json) |
+| Controlled Production Photo Face-Swap Pose Study | Four paid production image tasks using one synthetic source and four synthetic target states | [Method, exact outputs and limitations](https://faceswapai.com/resources/photo-face-swap-pose-study) | [`data/photo-pose-study-v1.json`](data/photo-pose-study-v1.json) |
 | Public Reference Frame Readiness Benchmark | Public reference-frame audit using the published Readiness Score method | [Method and sample boundary](https://faceswapai.com/resources/face-swap-input-readiness-benchmark) | [`data/readiness-benchmark-v1.json`](data/readiness-benchmark-v1.json) |
 | Controlled Face-Swap Input Degradation Study | Single-variable image degradations measured with the public score and production detector | [Design and limitations](https://faceswapai.com/resources/face-swap-input-degradation-study) | [`data/input-degradation-study-v1.json`](data/input-degradation-study-v1.json) |
 | Controlled Group Photo Face-Size Detection Study | Native-width resize series measuring detector returns, not output realism | [Design and results](https://faceswapai.com/resources/group-photo-face-size-detection-study) | [`data/group-face-size-study-v1.json`](data/group-face-size-study-v1.json) |
@@ -40,7 +41,7 @@ npm test
 
 Published tags and release attachments are immutable. A factual correction or
 method change receives a new version, new checksums and a documented release;
-version 1.0.0 is not silently rewritten.
+previous releases are not silently rewritten.
 
 ## Interpretation limits
 
@@ -57,7 +58,7 @@ using a result outside its stated scope.
 
 Use the repository's [`CITATION.cff`](CITATION.cff) metadata or cite:
 
-> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.0.0). <https://faceswapai.com/research>
+> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.1.0). <https://faceswapai.com/research>
 
 When using one dataset, cite its canonical landing page, identifier and version.
 Preserve the artifact SHA-256 when exact reproduction matters.
