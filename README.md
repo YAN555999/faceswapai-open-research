@@ -8,6 +8,7 @@ FaceSwapAI; this mirror provides stable files, checksums, citation metadata and
 a public correction history.
 
 - Canonical catalog: <https://faceswapai.com/research>
+- Public workflow examples and output evaluation checklist: <https://faceswapai.com/face-swap-examples>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
 - Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.2.0>
