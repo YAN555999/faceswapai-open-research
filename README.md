@@ -10,7 +10,7 @@ a public correction history.
 - Canonical catalog: <https://faceswapai.com/research>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
-- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.1.0>
+- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.2.0>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
 ## Included datasets
@@ -19,6 +19,7 @@ a public correction history.
 | --- | --- | --- | --- |
 | Independent Multi-Face Mapping Production Study v1 | One dated production run on one purpose-built synthetic four-adult image | [Method and limitations](https://faceswapai.com/resources/how-to-map-different-faces-in-a-group-photo) | [`data/independent-multi-face-mapping-study-v1.json`](data/independent-multi-face-mapping-study-v1.json) |
 | AI Face Swap Vendor-Published Claims Snapshot v1 | Normalized statements observed on seven official product pages; not an output-quality test | [Sources and field definitions](https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools) | [`data/ai-face-swap-public-claims-v1.json`](data/ai-face-swap-public-claims-v1.json) |
+| Face Swap Privacy and Consent Decision Matrix v1 | Editorial decision aid based on current product facts and selected official guidance; not legal advice or a security or training-use audit | [Sources, questions and limitations](https://faceswapai.com/resources/face-swap-safety-and-consent) | [`data/face-swap-privacy-checklist-v1.json`](data/face-swap-privacy-checklist-v1.json) |
 | Controlled Production Photo Face-Swap Pose Study | Four paid production image tasks using one synthetic source and four synthetic target states | [Method, exact outputs and limitations](https://faceswapai.com/resources/photo-face-swap-pose-study) | [`data/photo-pose-study-v1.json`](data/photo-pose-study-v1.json) |
 | Public Reference Frame Readiness Benchmark | Public reference-frame audit using the published Readiness Score method | [Method and sample boundary](https://faceswapai.com/resources/face-swap-input-readiness-benchmark) | [`data/readiness-benchmark-v1.json`](data/readiness-benchmark-v1.json) |
 | Controlled Face-Swap Input Degradation Study | Single-variable image degradations measured with the public score and production detector | [Design and limitations](https://faceswapai.com/resources/face-swap-input-degradation-study) | [`data/input-degradation-study-v1.json`](data/input-degradation-study-v1.json) |
@@ -48,6 +49,7 @@ previous releases are not silently rewritten.
 - This is not a face-recognition training corpus, benchmark leaderboard or provider endorsement.
 - Input-readiness and detector studies do not grade generated-face realism or identity similarity.
 - The vendor-claims file records dated first-party statements and does not independently verify those claims.
+- The privacy matrix is an editorial decision aid, not legal advice, a certification, an independent security audit or a provider training-use audit.
 - The production image and video studies report bounded observations, not universal success rates.
 - No customer uploads, private identity embeddings or private account data are included.
 
@@ -58,7 +60,7 @@ using a result outside its stated scope.
 
 Use the repository's [`CITATION.cff`](CITATION.cff) metadata or cite:
 
-> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.1.0). <https://faceswapai.com/research>
+> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.2.0). <https://faceswapai.com/research>
 
 When using one dataset, cite its canonical landing page, identifier and version.
 Preserve the artifact SHA-256 when exact reproduction matters.
