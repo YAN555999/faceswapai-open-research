@@ -11,6 +11,7 @@ a public correction history.
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
 - Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.2.0>
+- Independent preservation: <https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
 ## Included datasets
@@ -64,6 +65,17 @@ Use the repository's [`CITATION.cff`](CITATION.cff) metadata or cite:
 
 When using one dataset, cite its canonical landing page, identifier and version.
 Preserve the artifact SHA-256 when exact reproduction matters.
+
+## Independent preservation
+
+Software Heritage independently archived the repository state containing release
+`v1.2.0` on 2026-07-16. Its persistent snapshot identifier is
+[`swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732`](https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732).
+A GitHub push webhook requests a fresh Software Heritage visit after subsequent
+repository updates.
+
+The SWHID preserves repository history independently. The release manifest and
+`SHA256SUMS` remain the exact integrity records for downloadable release artifacts.
 
 ## Corrections and reuse
 
