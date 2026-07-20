@@ -15,7 +15,7 @@ a public correction history.
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
 - Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.4.0>
-- Latest independently preserved release: `v1.3.0` at <https://archive.softwareheritage.org/swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc>
+- Latest independently preserved release: `v1.4.0` at <https://archive.softwareheritage.org/swh:1:snp:0a481c9cdaa5c900a38742cf3b1f6daee6e26a98>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
 ## Included datasets
@@ -82,8 +82,8 @@ Preserve the artifact SHA-256 when exact reproduction matters.
 ## Independent preservation
 
 Software Heritage independently archived the repository state containing the
-immutable `v1.3.0` tag on 2026-07-20. Its persistent snapshot identifier is
-[`swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc`](https://archive.softwareheritage.org/swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc).
+immutable `v1.4.0` tag on 2026-07-20. Its persistent snapshot identifier is
+[`swh:1:snp:0a481c9cdaa5c900a38742cf3b1f6daee6e26a98`](https://archive.softwareheritage.org/swh:1:snp:0a481c9cdaa5c900a38742cf3b1f6daee6e26a98).
 A GitHub push webhook requests a fresh Software Heritage visit after subsequent
 repository updates.
 
