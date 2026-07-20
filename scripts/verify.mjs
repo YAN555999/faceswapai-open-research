@@ -8,7 +8,7 @@ const readJson = async (path) => JSON.parse(await readText(path));
 const sha256 = (buffer) => createHash('sha256').update(buffer).digest('hex');
 
 const checksumLines = (await readText('SHA256SUMS')).trim().split('\n');
-assert.equal(checksumLines.length, 14, 'SHA256SUMS must cover the complete v1.3.0 release surface');
+assert.equal(checksumLines.length, 15, 'SHA256SUMS must cover the complete v1.4.0 release surface');
 const checksumPaths = new Set();
 
 for (const line of checksumLines) {
@@ -22,15 +22,15 @@ for (const line of checksumLines) {
 }
 
 const catalog = await readJson('catalog/research-catalog-v1.json');
-assert.equal(catalog.version, '1.3.0');
-assert.equal(catalog.datasetCount, 9);
-assert.equal(catalog.datasets.length, 9);
+assert.equal(catalog.version, '1.4.0');
+assert.equal(catalog.datasetCount, 10);
+assert.equal(catalog.datasets.length, 10);
 assert.equal(catalog.canonicalUrl, 'https://faceswapai.com/research');
 
-const manifest = await readJson('manifest-v1.3.0.json');
-assert.equal(manifest.release, 'v1.3.0');
+const manifest = await readJson('manifest-v1.4.0.json');
+assert.equal(manifest.release, 'v1.4.0');
 assert.equal(manifest.artifactCount, manifest.artifacts.length);
-assert.equal(manifest.artifactCount, 11);
+assert.equal(manifest.artifactCount, 12);
 
 for (const artifact of manifest.artifacts) {
   const file = new URL(artifact.path, root);
@@ -42,8 +42,8 @@ for (const artifact of manifest.artifacts) {
 }
 
 const dataPackage = await readJson('datapackage.json');
-assert.equal(dataPackage.version, '1.3.0');
-assert.equal(dataPackage.resources.length, 11);
+assert.equal(dataPackage.version, '1.4.0');
+assert.equal(dataPackage.resources.length, 12);
 
 for (const resource of dataPackage.resources) {
   const file = new URL(resource.path, root);
@@ -56,7 +56,7 @@ for (const resource of dataPackage.resources) {
 
 assert.ok(checksumPaths.has('CITATION.cff'));
 assert.ok(checksumPaths.has('datapackage.json'));
-assert.ok(checksumPaths.has('manifest-v1.3.0.json'));
+assert.ok(checksumPaths.has('manifest-v1.4.0.json'));
 
 const expectedIdentifiers = new Set([
   'faceswapai-independent-multi-face-mapping-v1.0.0',
@@ -68,6 +68,7 @@ const expectedIdentifiers = new Set([
   'faceswapai-input-degradation-study-v1.0.0',
   'faceswapai-group-face-size-detection-study-v1.0.0',
   'faceswapai-video-continuity-study-v1.0.0',
+  'faceswapai-api-contract-conformance-matrix-v1.0.0',
 ]);
 
 for (const dataset of catalog.datasets) {
@@ -91,11 +92,26 @@ assert.equal(metricCrosswalk.scope.generatedMediaIncluded, false);
 assert.equal(metricCrosswalk.metrics.at(-1).id, 'detector-performance');
 assert.match(metricCrosswalk.metrics.at(-1).doesNotAnswer, /Perceptual realism, identity fidelity/i);
 
+const apiConformance = await readJson('data/face-swap-api-conformance-v1.json');
+assert.equal(apiConformance.scope.protocolCheckCount, 15);
+assert.equal(apiConformance.scope.passCount, 8);
+assert.equal(apiConformance.scope.partialCount, 4);
+assert.equal(apiConformance.scope.notExecutedCount, 3);
+assert.equal(apiConformance.checks.length, 15);
+assert.equal(apiConformance.checks.filter(({ status }) => status === 'pass').length, 8);
+assert.equal(apiConformance.checks.filter(({ status }) => status === 'partial').length, 4);
+assert.equal(apiConformance.checks.filter(({ status }) => status === 'not-executed').length, 3);
+assert.equal(apiConformance.scope.independentAudit, false);
+assert.equal(apiConformance.scope.paidUpstreamGenerationInvoked, false);
+assert.equal(apiConformance.contractSnapshot.responseBodySha256, '8549ff47fd7669829deb203527368d0b9bc15fadc475b2aa80e96824c5206c89');
+assert.equal(apiConformance.productionSmoke.result, 'pass');
+assert.equal(apiConformance.productionSmoke.cleanupCompleted, true);
+
 const citation = await readText('CITATION.cff');
 assert.match(citation, /^cff-version: 1\.2\.0/m);
 assert.match(citation, /^type: dataset$/m);
 assert.match(citation, /^repository-code: "https:\/\/github\.com\/YAN555999\/faceswapai-open-research"$/m);
-assert.match(citation, /^version: "1\.3\.0"$/m);
-assert.match(citation, /Software Heritage snapshot containing release v1\.2\.0/);
+assert.match(citation, /^version: "1\.4\.0"$/m);
+assert.match(citation, /Software Heritage snapshot containing release v1\.3\.0/);
 
 console.log(`Verified ${catalog.datasets.length} datasets, ${manifest.artifacts.length} release artifacts and ${checksumLines.length} checksums.`);

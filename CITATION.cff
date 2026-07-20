@@ -5,14 +5,14 @@ type: dataset
 authors:
   - name: "FaceSwapAI Editorial"
     website: "https://faceswapai.com/press#editorial-standards"
-version: "1.3.0"
+version: "1.4.0"
 date-released: "2026-07-20"
 url: "https://faceswapai.com/research"
 repository-code: "https://github.com/YAN555999/faceswapai-open-research"
 identifiers:
   - type: swh
-    value: "swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732"
-    description: "Software Heritage snapshot containing release v1.2.0"
+    value: "swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc"
+    description: "Software Heritage snapshot containing release v1.3.0"
 license: CC-BY-4.0
 abstract: "A versioned catalog of bounded face-swap measurements, dated vendor-claim snapshots and decision aids with source boundaries and explicit limitations."
 keywords:
@@ -23,3 +23,4 @@ keywords:
   - privacy
   - consent
   - open data
+  - API conformance

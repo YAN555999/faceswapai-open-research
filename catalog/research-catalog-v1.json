@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "lastUpdated": "2026-07-20",
-  "identifier": "faceswapai-research-catalog-v1.3.0",
+  "identifier": "faceswapai-research-catalog-v1.4.0",
   "name": "FaceSwapAI Face Swap Research and Open Data Catalog",
   "description": "A versioned catalog of bounded face-swap measurements, dated vendor-claim snapshots and decision aids with source boundaries and explicit limitations.",
   "canonicalUrl": "https://faceswapai.com/research",
@@ -12,7 +12,7 @@
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "isAccessibleForFree": true,
-  "datasetCount": 9,
+  "datasetCount": 10,
   "datasets": [
     {
       "identifier": "faceswapai-independent-multi-face-mapping-v1.0.0",
@@ -91,6 +91,46 @@
         "https://remaker.ai/face-swap-free/",
         "https://facy.ai/video-face-swap",
         "https://pixlr.com/face-swap/"
+      ]
+    },
+    {
+      "identifier": "faceswapai-api-contract-conformance-matrix-v1.0.0",
+      "name": "FaceSwapAI API Contract Conformance Matrix v1",
+      "version": "1.0.0",
+      "datePublished": "2026-07-20",
+      "dateModified": "2026-07-20",
+      "landingPage": "https://faceswapai.com/resources/how-to-evaluate-a-face-swap-api",
+      "download": "https://faceswapai.com/datasets/face-swap-api-conformance-v1.json",
+      "encodingFormat": "application/json",
+      "description": "Record which checks in the public 15-point face-swap API evaluation protocol were observed, partially covered or deliberately not executed against one dated FaceSwapAI production deployment.",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "face swap API",
+        "API conformance",
+        "OpenAPI",
+        "authentication",
+        "task ownership",
+        "rate limiting",
+        "credit refunds"
+      ],
+      "measurementTechnique": "Dated first-party production smoke evidence and raw OpenAPI contract inspection, with pass, partial and not-executed states kept separate",
+      "variables": [
+        "protocol check number",
+        "requirement",
+        "status",
+        "evidence type",
+        "observed behavior",
+        "evidence boundary",
+        "evidence references"
+      ],
+      "isBasedOn": [
+        "https://faceswapai.com/openapi.json",
+        "https://faceswapai.com/product-facts-v1.json",
+        "https://faceswapai.com/resources/how-to-evaluate-a-face-swap-api",
+        "https://faceswapai.com/resources/photo-face-swap-pose-study",
+        "https://faceswapai.com/resources/video-face-swap-continuity-study",
+        "https://github.com/YAN555999/faceswapai-api-examples/releases/tag/v1.0.0"
       ]
     },
     {

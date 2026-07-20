@@ -14,7 +14,7 @@ a public correction history.
 - Public workflow examples and output evaluation checklist: <https://faceswapai.com/face-swap-examples>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
-- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.3.0>
+- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.4.0>
 - Latest independently preserved release: `v1.3.0` at <https://archive.softwareheritage.org/swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
@@ -26,6 +26,7 @@ a public correction history.
 | AI Face Swap Vendor-Published Claims Snapshot v1 | Normalized statements observed on seven official product pages; not an output-quality test | [Sources and field definitions](https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools) | [`data/ai-face-swap-public-claims-v1.json`](data/ai-face-swap-public-claims-v1.json) |
 | Face Swap Privacy and Consent Decision Matrix v1 | Editorial decision aid based on current product facts and selected official guidance; not legal advice or a security or training-use audit | [Sources, questions and limitations](https://faceswapai.com/resources/face-swap-safety-and-consent) | [`data/face-swap-privacy-checklist-v1.json`](data/face-swap-privacy-checklist-v1.json) |
 | Face Swap Evaluation Metric Crosswalk v1 | Nine primary-source measurement families with directions, evidence requirements and interpretation limits; not provider scores or a leaderboard | [Metric definitions and review protocol](https://faceswapai.com/resources/how-to-evaluate-face-swap-quality) | [`data/face-swap-evaluation-metrics-v1.json`](data/face-swap-evaluation-metrics-v1.json) |
+| FaceSwapAI API Contract Conformance Matrix v1 | One dated first-party OpenAPI inspection and isolated production smoke run with pass, partial and not-executed states; not an independent audit, certification, SLA or load test | [15-check protocol and evidence boundaries](https://faceswapai.com/resources/how-to-evaluate-a-face-swap-api) | [`data/face-swap-api-conformance-v1.json`](data/face-swap-api-conformance-v1.json) |
 | Controlled Production Photo Face-Swap Pose Study | Four paid production image tasks using one synthetic source and four synthetic target states | [Method, exact outputs and limitations](https://faceswapai.com/resources/photo-face-swap-pose-study) | [`data/photo-pose-study-v1.json`](data/photo-pose-study-v1.json) |
 | Public Reference Frame Readiness Benchmark | Public reference-frame audit using the published Readiness Score method | [Method and sample boundary](https://faceswapai.com/resources/face-swap-input-readiness-benchmark) | [`data/readiness-benchmark-v1.json`](data/readiness-benchmark-v1.json) |
 | Controlled Face-Swap Input Degradation Study | Single-variable image degradations measured with the public score and production detector | [Design and limitations](https://faceswapai.com/resources/face-swap-input-degradation-study) | [`data/input-degradation-study-v1.json`](data/input-degradation-study-v1.json) |
@@ -62,6 +63,7 @@ previous releases are not silently rewritten.
 - Input-readiness and detector studies do not grade generated-face realism or identity similarity.
 - The vendor-claims file records dated first-party statements and does not independently verify those claims.
 - The privacy matrix is an editorial decision aid, not legal advice, a certification, an independent security audit or a provider training-use audit.
+- The API conformance matrix is a bounded first-party observation, not an independent audit, security assessment, certification, SLA, load test or all-format completion claim.
 - The production image and video studies report bounded observations, not universal success rates.
 - No customer uploads, private identity embeddings or private account data are included.
 
@@ -72,7 +74,7 @@ using a result outside its stated scope.
 
 Use the repository's [`CITATION.cff`](CITATION.cff) metadata or cite:
 
-> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.3.0). <https://faceswapai.com/research>
+> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.4.0). <https://faceswapai.com/research>
 
 When using one dataset, cite its canonical landing page, identifier and version.
 Preserve the artifact SHA-256 when exact reproduction matters.
@@ -87,8 +89,8 @@ repository updates.
 
 The SWHID preserves repository history independently. The release manifest and
 `SHA256SUMS` remain the exact integrity records for downloadable release artifacts.
-The immutable `v1.3.0` citation attachment records the previously verified
-`v1.2.0` SWHID because the new snapshot was created after the tag was published.
+The immutable `v1.4.0` citation attachment records the previously verified
+`v1.3.0` SWHID because a fresh snapshot can only be created after the new tag is published.
 
 ## Corrections and reuse
 

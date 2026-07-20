@@ -1,0 +1,309 @@
+{
+  "name": "FaceSwapAI API Contract Conformance Matrix v1",
+  "identifier": "faceswapai-api-contract-conformance-matrix-v1.0.0",
+  "version": "1.0.0",
+  "dateObserved": "2026-07-20",
+  "datePublished": "2026-07-20",
+  "observedAt": "2026-07-20T10:08:36.851Z",
+  "canonicalUrl": "https://faceswapai.com/datasets/face-swap-api-conformance-v1.json",
+  "humanReadableRecord": "https://faceswapai.com/resources/how-to-evaluate-a-face-swap-api",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "name": "FaceSwapAI Editorial",
+    "url": "https://faceswapai.com/press#editorial-standards"
+  },
+  "purpose": "Record which checks in the public 15-point face-swap API evaluation protocol were observed, partially covered or deliberately not executed against one dated FaceSwapAI production deployment.",
+  "scope": {
+    "protocolCheckCount": 15,
+    "passCount": 8,
+    "partialCount": 4,
+    "notExecutedCount": 3,
+    "resultCountsIncludePartialAsPass": false,
+    "firstPartySelfTest": true,
+    "independentAudit": false,
+    "certification": false,
+    "serviceLevelAssessment": false,
+    "loadTest": false,
+    "generationQualityAssessment": false,
+    "customerMediaIncluded": false,
+    "paidUpstreamGenerationInvoked": false
+  },
+  "method": {
+    "environment": "The deployed production application was reached through its local service endpoint on the production host. Public OpenAPI bytes were fetched separately from the canonical HTTPS URL.",
+    "isolation": "The smoke run created unique example.invalid users, API keys, sessions, orders, task fixtures and Redis keys, then deleted or expired them. No customer account, upload, result or credential was read or published.",
+    "upstreamBoundary": "No paid provider generation was submitted. Runtime validation, authentication, task serialization, ownership, rate limiting and credit-state transitions were exercised without generating media.",
+    "statusDefinitions": {
+      "pass": "The bounded requirement stated in this row matched observed production behavior or the fetched machine-readable contract.",
+      "partial": "Some named evidence exists, but at least one material part of the protocol check was not exercised in this observation.",
+      "not-executed": "The check was intentionally not run; documentation or contract text is not converted into a runtime pass."
+    }
+  },
+  "contractSnapshot": {
+    "url": "https://faceswapai.com/openapi.json",
+    "fetchedAt": "2026-07-20T10:09:03.186Z",
+    "httpStatus": 200,
+    "responseBodySha256": "8549ff47fd7669829deb203527368d0b9bc15fadc475b2aa80e96824c5206c89",
+    "responseBodyBytes": 20387,
+    "openapi": "3.1.0",
+    "apiVersion": "1.0.0",
+    "productionServer": "https://faceswapai.com",
+    "pathObjectCount": 5,
+    "operationCount": 9
+  },
+  "productionSmoke": {
+    "observedAt": "2026-07-20T10:08:36.851Z",
+    "runId": "1784542116851-04320019",
+    "applicationCommit": "c03b2fd",
+    "scriptPath": "scripts/production-smoke-test.mjs",
+    "scriptSha256": "74d7ebf67686764bb642f60298d37eddd7812ad49998461b38fc16d97a9b96c3",
+    "result": "pass",
+    "assertionGroups": [
+      "invite-after-verification-once",
+      "daily-reward-once",
+      "share-reward-once",
+      "invalid-upload-preserves-trial",
+      "private-order-fields-hidden",
+      "unsigned-allpays-rejected",
+      "api-key-lifecycle-and-v1-routes",
+      "api-auth-401",
+      "api-consent-and-invalid-upload-no-charge",
+      "api-insufficient-credits-402",
+      "api-task-states-history-and-ownership",
+      "api-rate-limit-429",
+      "api-key-email-verification",
+      "task-refund-once",
+      "task-complete-once",
+      "trial-watermark-full-email-and-upgrade-copy"
+    ],
+    "cleanupCompleted": true
+  },
+  "checks": [
+    {
+      "number": 1,
+      "id": "openapi-contract",
+      "requirement": "OpenAPI parses and names the production server.",
+      "status": "pass",
+      "evidenceType": [
+        "contract-inspection"
+      ],
+      "observed": "The fetched response parsed as OpenAPI 3.1.0, identified API version 1.0.0 and https://faceswapai.com, and contained five path objects with nine HTTP operations.",
+      "boundary": "A parsed contract does not prove every handler or downstream provider behavior.",
+      "evidence": [
+        "https://faceswapai.com/openapi.json"
+      ]
+    },
+    {
+      "number": 2,
+      "id": "api-key-lifecycle",
+      "requirement": "Key creation, one-time disclosure, storage, listing, invalid-key handling and revocation work.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "A temporary key was disclosed once, stored as its SHA-256 hash, omitted from key-list responses, accepted while active, and rejected with 401 after revocation. Missing and invalid bearer credentials also returned 401.",
+      "boundary": "This was one isolated account lifecycle, not a penetration test or cryptographic certification.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 3,
+      "id": "verified-email-gate",
+      "requirement": "An unverified account cannot enter the generation handler.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "A temporary unverified account API key received 403 from POST /api/v1/face-swap/image before consent or upload validation ran.",
+      "boundary": "The check covers the observed API route and account state, not every possible identity-provider failure mode.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 4,
+      "id": "supported-media-completion",
+      "requirement": "Every accepted media type completes for the fixed evaluation workload.",
+      "status": "partial",
+      "evidenceType": [
+        "published-production-study"
+      ],
+      "observed": "Separate published studies record completed paid photo and video tasks. This smoke run submitted no upstream generation, and did not establish GIF or multiple-face completion.",
+      "boundary": "Two bounded historical completions are not a current all-format success rate or availability guarantee.",
+      "evidence": [
+        "https://faceswapai.com/resources/photo-face-swap-pose-study",
+        "https://faceswapai.com/resources/video-face-swap-continuity-study"
+      ]
+    },
+    {
+      "number": 5,
+      "id": "invalid-media-no-charge",
+      "requirement": "Corrupt or mislabeled files fail before paid credits or the eligible photo trial are consumed.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "Two image/png uploads containing non-image bytes returned 400 through the stable v1 image route; the database credit balance and Redis photo-trial counter were unchanged.",
+      "boundary": "This row covers one corrupt-payload class, not every codec, extension or malformed-container combination.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 6,
+      "id": "media-boundaries",
+      "requirement": "Size, duration, frame and selected-face limits match the published contract at their boundaries.",
+      "status": "not-executed",
+      "evidenceType": [
+        "contract-only"
+      ],
+      "observed": "The contract publishes boundaries, but this observation did not upload maximum-size files, maximum-duration media, frame-limit cases or 1-to-10 face selections.",
+      "boundary": "Published limits are not counted as a runtime pass.",
+      "evidence": [
+        "https://faceswapai.com/openapi.json",
+        "https://faceswapai.com/face-swap-api"
+      ]
+    },
+    {
+      "number": 7,
+      "id": "credit-formulas",
+      "requirement": "Reserved and consumed credits match the exact photo, multiple-face, video and GIF formulas.",
+      "status": "partial",
+      "evidenceType": [
+        "production-smoke",
+        "published-production-study"
+      ],
+      "observed": "The run verified a 13-credit reservation, exactly-once completion and refund transitions, and a 402 response with an unchanged balance when a valid photo request had neither 13 credits nor an eligible trial. A published 10-second video task used 10 credits. GIF and multiple-face formulas were not exercised here.",
+      "boundary": "This does not independently recalculate every media formula from fresh accepted tasks.",
+      "evidence": [
+        "productionSmoke",
+        "https://faceswapai.com/resources/video-face-swap-continuity-study"
+      ]
+    },
+    {
+      "number": 8,
+      "id": "rate-limit",
+      "requirement": "The authenticated request limit returns a controlled 429 response.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "The isolated user minute-window counter was set to the documented threshold of 300; the next authenticated task-history request returned 429.",
+      "boundary": "This is a threshold-path check, not a concurrency, throughput, distributed-edge or denial-of-service load test.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 9,
+      "id": "polling-states",
+      "requirement": "Polling and history expose only documented task states and honor filters.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "Owned isolated fixtures returned PENDING, PROCESSING, COMPLETED, FAILED and CANCELLED unchanged through the stable v1 status route. FAILED history filtering returned the owned failed fixture and no other state.",
+      "boundary": "Fixtures tested response serialization and filtering, not queue timing or a natural end-to-end transition sequence.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 10,
+      "id": "uncertain-post-reconciliation",
+      "requirement": "Client network uncertainty does not cause a blind duplicate generation POST.",
+      "status": "not-executed",
+      "evidenceType": [
+        "contract-boundary"
+      ],
+      "observed": "The current contract publishes neither an idempotency-key field nor a webhook. No connection drop after server acceptance was induced in this run.",
+      "boundary": "This remains an integration responsibility and is not counted as a server pass.",
+      "evidence": [
+        "https://faceswapai.com/openapi.json",
+        "https://faceswapai.com/resources/how-to-evaluate-a-face-swap-api"
+      ]
+    },
+    {
+      "number": 11,
+      "id": "refund-exactly-once",
+      "requirement": "A failed reserved task refunds one reservation exactly once.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "Calling the production failure transition twice for one isolated 13-credit reservation returned refunded=true then refunded=false, and restored the temporary account from 37 to 50 credits only once.",
+      "boundary": "No upstream provider failure was induced; the production credit-state transition was exercised directly against isolated records.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 12,
+      "id": "task-ownership",
+      "requirement": "One account cannot read another account task.",
+      "status": "pass",
+      "evidenceType": [
+        "production-smoke"
+      ],
+      "observed": "A valid API key requesting an isolated task owned by another temporary account received 404.",
+      "boundary": "This is one object-ownership route check, not a complete authorization audit of every account resource.",
+      "evidence": [
+        "productionSmoke"
+      ]
+    },
+    {
+      "number": 13,
+      "id": "temporary-result-access",
+      "requirement": "Result URLs are treated as temporary and expiry handling is verified.",
+      "status": "not-executed",
+      "evidenceType": [
+        "policy-only"
+      ],
+      "observed": "The privacy policy schedules task-file deletion after 24 hours, but this run created no result URL and did not wait through an expiry window.",
+      "boundary": "A policy statement is not counted as observed deletion or URL-expiry evidence.",
+      "evidence": [
+        "https://faceswapai.com/privacy"
+      ]
+    },
+    {
+      "number": 14,
+      "id": "trial-paid-watermark",
+      "requirement": "Trial and paid watermark behavior differs exactly as disclosed.",
+      "status": "partial",
+      "evidenceType": [
+        "production-smoke",
+        "published-product-facts"
+      ],
+      "observed": "The production watermark builder emitted FaceSwapAI branding, the complete temporary account email and the buy-credits-and-regenerate instruction. No new paid output was generated in this run.",
+      "boundary": "The trial artifact path passed; the paid-output absence of that watermark was not freshly exercised here.",
+      "evidence": [
+        "productionSmoke",
+        "https://faceswapai.com/face-swap-no-watermark"
+      ]
+    },
+    {
+      "number": 15,
+      "id": "consent-retention-subprocessors",
+      "requirement": "Consent, retention and subprocessor boundaries receive dated technical and policy review.",
+      "status": "partial",
+      "evidenceType": [
+        "production-smoke",
+        "policy-review"
+      ],
+      "observed": "Missing consent returned 400 before upload handling and changed neither credits nor trial eligibility. Retention and subprocessor boundaries were reviewed in published policy, but deletion timing and upstream processing were not runtime-tested.",
+      "boundary": "This is not legal advice, a privacy certification, a subprocessor audit or proof of deletion from every backup or provider system.",
+      "evidence": [
+        "productionSmoke",
+        "https://faceswapai.com/privacy",
+        "https://faceswapai.com/resources/face-swap-safety-and-consent"
+      ]
+    }
+  ],
+  "limitations": [
+    "This is a first-party, dated conformance snapshot with explicit evidence boundaries. It is not an independent audit, security assessment, certification, SLA or promise of future behavior.",
+    "A pass applies only to the exact requirement and observation described in that row. Partial and not-executed rows must not be presented as passes.",
+    "No paid upstream generation, production load, customer media, 24-hour wait or destructive provider-failure injection was used in the smoke run.",
+    "Task-state fixtures validate ownership, filtering and response serialization but do not measure queue transition order, latency or provider availability.",
+    "The raw OpenAPI response hash binds the decoded response body observed at the recorded time; any byte-level contract change will produce a different hash."
+  ]
+}

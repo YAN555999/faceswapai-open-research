@@ -4,7 +4,7 @@ const root = new URL('../', import.meta.url);
 const output = new URL('../_site/', import.meta.url);
 const siteUrl = 'https://yan555999.github.io/faceswapai-open-research';
 const repositoryUrl = 'https://github.com/YAN555999/faceswapai-open-research';
-const releaseUrl = `${repositoryUrl}/releases/tag/v1.3.0`;
+const releaseUrl = `${repositoryUrl}/releases/tag/v1.4.0`;
 const archivedReleaseTag = 'v1.3.0';
 const softwareHeritageUrl = 'https://archive.softwareheritage.org/swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc';
 const socialImage = 'https://faceswapai.com/research/photo-pose-study-v1.jpg';
@@ -15,6 +15,7 @@ const dcatUrl = `${siteUrl}/catalog/research-catalog-dcat.jsonld`;
 
 const readText = (path) => readFile(new URL(path, root), 'utf8');
 const catalog = JSON.parse(await readText('catalog/research-catalog-v1.json'));
+const checksumCount = (await readText('SHA256SUMS')).trim().split('\n').length;
 
 const escapeHtml = (value = '') => String(value)
   .replaceAll('&', '&amp;')
@@ -244,7 +245,7 @@ ${header()}
   <section class="facts-band" aria-label="Catalog facts">
     <div class="facts">
       <div class="fact"><strong>${catalog.datasetCount}</strong><span>versioned datasets</span></div>
-      <div class="fact"><strong>13</strong><span>release checksums</span></div>
+      <div class="fact"><strong>${checksumCount}</strong><span>release checksums</span></div>
       <div class="fact"><strong>CC BY 4.0</strong><span>catalog license</span></div>
       <div class="fact"><strong>${archivedReleaseTag}</strong><span>independent SWH snapshot</span></div>
     </div>
