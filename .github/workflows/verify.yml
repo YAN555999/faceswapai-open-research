@@ -19,5 +19,5 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Verify checksums and metadata
+      - name: Verify archive and browsable catalog
         run: npm test

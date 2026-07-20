@@ -8,6 +8,7 @@ FaceSwapAI; this mirror provides stable files, checksums, citation metadata and
 a public correction history.
 
 - Canonical catalog: <https://faceswapai.com/research>
+- Browsable archive: <https://yan555999.github.io/faceswapai-open-research/>
 - Public workflow examples and output evaluation checklist: <https://faceswapai.com/face-swap-examples>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
@@ -31,6 +32,11 @@ a public correction history.
 The catalog is available as [JSON](catalog/research-catalog-v1.json) and
 [CSV](catalog/research-catalog-v1.csv). [`datapackage.json`](datapackage.json)
 provides a machine-readable inventory of the mirrored resources.
+
+The [browsable archive](https://yan555999.github.io/faceswapai-open-research/)
+publishes a self-contained record for every dataset, Dataset JSON-LD, mirrored
+downloads, a sitemap and citation metadata. It is a publisher-controlled mirror,
+not an independent review or endorsement.
 
 ## Integrity and release policy
 

@@ -6,8 +6,9 @@
   "license": "CC-BY-4.0",
   "type": "module",
   "scripts": {
-    "test": "node scripts/verify.mjs",
-    "verify": "node scripts/verify.mjs"
+    "build:pages": "node scripts/build-pages.mjs",
+    "test": "node scripts/verify.mjs && node scripts/build-pages.mjs && node scripts/verify-pages.mjs",
+    "verify": "npm test"
   },
   "engines": {
     "node": ">=20"
