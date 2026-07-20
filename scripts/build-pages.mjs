@@ -8,6 +8,9 @@ const releaseUrl = `${repositoryUrl}/releases/tag/v1.2.0`;
 const softwareHeritageUrl = 'https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732';
 const socialImage = 'https://faceswapai.com/research/photo-pose-study-v1.jpg';
 const googleSiteVerification = 'NUMquWSbyXOwJSNRPxq7kp_LCszL6N9VbVuXMoy3d0A';
+const organizationId = 'https://faceswapai.com/#organization';
+const feedUrl = `${siteUrl}/feed.xml`;
+const dcatUrl = `${siteUrl}/catalog/research-catalog-dcat.jsonld`;
 
 const readText = (path) => readFile(new URL(path, root), 'utf8');
 const catalog = JSON.parse(await readText('catalog/research-catalog-v1.json'));
@@ -31,10 +34,34 @@ const pageAssets = [
   'video-continuity-output-poster-v1.webp',
 ];
 const localVisuals = {
-  'faceswapai-independent-multi-face-mapping-v1.0.0': { file: 'multi-face-mapping-output-v1.webp', width: 960, height: 540 },
-  'faceswapai-photo-pose-study-v1.0.0': { file: 'photo-pose-output-neutral-v1.avif', width: 960, height: 540 },
-  'faceswapai-group-face-size-detection-study-v1.0.0': { file: 'group-photo-reference-v1.webp', width: 960, height: 640 },
-  'faceswapai-video-continuity-study-v1.0.0': { file: 'video-continuity-output-poster-v1.webp', width: 960, height: 540 },
+  'faceswapai-independent-multi-face-mapping-v1.0.0': {
+    file: 'multi-face-mapping-output-v1.webp',
+    width: 960,
+    height: 540,
+    alt: 'Synthetic four-person output with four independently mapped replacement faces',
+    caption: 'Independent multi-face mapping production output',
+  },
+  'faceswapai-photo-pose-study-v1.0.0': {
+    file: 'photo-pose-output-neutral-v1.avif',
+    width: 960,
+    height: 540,
+    alt: 'Synthetic neutral-pose output from the controlled photo face-swap pose study',
+    caption: 'Controlled photo pose study neutral output',
+  },
+  'faceswapai-group-face-size-detection-study-v1.0.0': {
+    file: 'group-photo-reference-v1.webp',
+    width: 960,
+    height: 640,
+    alt: 'Synthetic four-person group-photo reference used for face-size detector measurements',
+    caption: 'Group photo reference used across the resize series',
+  },
+  'faceswapai-video-continuity-study-v1.0.0': {
+    file: 'video-continuity-output-poster-v1.webp',
+    width: 960,
+    height: 540,
+    alt: 'Synthetic output frame from a controlled 10-second video face-swap continuity study',
+    caption: 'Controlled production video continuity output',
+  },
 };
 
 const datasetVisual = (dataset) => {
@@ -51,7 +78,31 @@ const datasetVisual = (dataset) => {
   return remote ? { absolute: remote, src: remote, width: 960, height: 640 } : null;
 };
 
-function documentHead({ title, description, canonical, image = socialImage, type = 'website', extra = '', schema, stylesHref = 'assets/styles.css' }) {
+const publisherSchema = {
+  '@type': 'Organization',
+  '@id': organizationId,
+  name: 'FaceSwapAI',
+  alternateName: 'FaceSwapAI Editorial',
+  url: 'https://faceswapai.com/',
+  publishingPrinciples: 'https://faceswapai.com/press#editorial-standards',
+};
+
+const datasetImageSchema = (dataset) => {
+  const visual = datasetVisual(dataset);
+  if (!visual?.absolute || !visual.alt) return undefined;
+  return {
+    '@type': 'ImageObject',
+    contentUrl: visual.absolute,
+    caption: visual.alt,
+    creator: publisherSchema,
+    creditText: 'FaceSwapAI Editorial',
+    copyrightNotice: 'FaceSwapAI',
+    license: dataset.license,
+    acquireLicensePage: `${siteUrl}/NOTICE.md`,
+  };
+};
+
+function documentHead({ title, description, canonical, image = socialImage, imageAlt = title, type = 'website', extra = '', schema, stylesHref = 'assets/styles.css' }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -62,6 +113,7 @@ function documentHead({ title, description, canonical, image = socialImage, type
   <meta name="description" content="${escapeHtml(description)}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="${canonical}">
+  <link rel="alternate" type="application/atom+xml" title="FaceSwapAI Open Research updates" href="${feedUrl}">
   <link rel="stylesheet" href="${stylesHref}">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23101817'/%3E%3Ccircle cx='32' cy='32' r='19' fill='%23df573b'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%23f7a28f'/%3E%3C/svg%3E">
   <meta property="og:type" content="${type}">
@@ -70,10 +122,12 @@ function documentHead({ title, description, canonical, image = socialImage, type
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${image}">
+  <meta property="og:image:alt" content="${escapeHtml(imageAlt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${image}">
+  <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   ${extra}
   <script type="application/ld+json">${jsonScript(schema)}</script>
 </head>`;
@@ -97,7 +151,7 @@ function footer() {
   return `<footer class="site-footer">
   <div class="footer-inner">
     <span>Publisher-controlled research mirror · CC BY 4.0</span>
-    <span><a href="https://faceswapai.com/press#editorial-standards">Editorial standard</a> · <a href="${repositoryUrl}/issues/new?template=data-correction.yml">Report a correction</a></span>
+    <span><a href="${feedUrl}">Atom feed</a> · <a href="https://faceswapai.com/press#editorial-standards">Editorial standard</a> · <a href="${repositoryUrl}/issues/new?template=data-correction.yml">Report a correction</a></span>
   </div>
 </footer>`;
 }
@@ -114,11 +168,8 @@ const catalogSchema = {
   version: catalog.version,
   license: catalog.license,
   isAccessibleForFree: true,
-  creator: {
-    '@type': 'Organization',
-    name: catalog.publisher.name,
-    url: catalog.publisher.url,
-  },
+  creator: publisherSchema,
+  publisher: publisherSchema,
   hasPart: catalog.datasets.map((dataset) => ({
     '@type': 'Dataset',
     '@id': `${datasetUrl(dataset)}#dataset`,
@@ -128,11 +179,9 @@ const catalogSchema = {
     sameAs: dataset.landingPage,
     version: dataset.version,
     license: dataset.license,
-    creator: {
-      '@type': 'Organization',
-      name: catalog.publisher.name,
-      url: catalog.publisher.url,
-    },
+    creator: publisherSchema,
+    publisher: publisherSchema,
+    image: datasetImageSchema(dataset),
   })),
 };
 
@@ -166,7 +215,8 @@ const indexHtml = `${documentHead({
   canonical: `${siteUrl}/`,
   schema: catalogSchema,
   extra: `<link rel="alternate" type="application/json" href="${siteUrl}/catalog/research-catalog-v1.json">
-  <link rel="alternate" type="text/csv" href="${siteUrl}/catalog/research-catalog-v1.csv">`,
+  <link rel="alternate" type="text/csv" href="${siteUrl}/catalog/research-catalog-v1.csv">
+  <link rel="alternate" type="application/ld+json" href="${dcatUrl}">`,
 })}
 <body>
 ${header()}
@@ -224,6 +274,8 @@ ${header()}
         <a class="button" href="${siteUrl}/CITATION.cff">CITATION.cff</a>
         <a class="button" href="${siteUrl}/SHA256SUMS">SHA-256 checksums</a>
         <a class="button" href="${siteUrl}/datapackage.json">Data Package</a>
+        <a class="button" href="${dcatUrl}">DCAT JSON-LD</a>
+        <a class="button" href="${feedUrl}">Atom feed</a>
       </div>
     </section>
   </div>
@@ -242,6 +294,7 @@ function datasetSchema(dataset) {
     description: dataset.description,
     url: datasetUrl(dataset),
     sameAs: dataset.landingPage,
+    mainEntityOfPage: datasetUrl(dataset),
     identifier: dataset.identifier,
     version: dataset.version,
     datePublished: dataset.datePublished,
@@ -252,11 +305,9 @@ function datasetSchema(dataset) {
     measurementTechnique: dataset.measurementTechnique,
     variableMeasured: dataset.variables,
     isBasedOn: dataset.isBasedOn,
-    creator: {
-      '@type': 'Organization',
-      name: catalog.publisher.name,
-      url: catalog.publisher.url,
-    },
+    image: datasetImageSchema(dataset),
+    creator: publisherSchema,
+    publisher: publisherSchema,
     includedInDataCatalog: {
       '@type': 'DataCatalog',
       '@id': `${siteUrl}/#catalog`,
@@ -288,6 +339,8 @@ function datasetHtml(dataset) {
   <meta name="citation_author" content="FaceSwapAI Editorial">
   <meta name="citation_publication_date" content="${escapeHtml(dataset.datePublished)}">
   <meta name="citation_public_url" content="${canonical}">
+  <meta name="DC.type" content="Dataset">
+  <meta name="DC.rights" content="${escapeHtml(dataset.license)}">
   <link rel="alternate" type="${escapeHtml(dataset.encodingFormat)}" href="${mirrorUrl(dataset)}">`;
 
   return `${documentHead({
@@ -295,6 +348,7 @@ function datasetHtml(dataset) {
     description,
     canonical,
     image: visual?.absolute || socialImage,
+    imageAlt: visual?.alt || `${dataset.name} research record`,
     type: 'article',
     extra,
     schema: datasetSchema(dataset),
@@ -316,7 +370,7 @@ ${header()}
   </header>
   <div class="content record-layout">
     <article class="record-main">
-      ${visual ? `<figure class="record-visual"><img src="${visual.src}" alt="Published source or output associated with ${escapeHtml(dataset.name)}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async"><figcaption>Published evidence asset listed by this dataset record.</figcaption></figure>` : ''}
+      ${visual ? `<figure class="record-visual"><img src="${visual.src}" alt="${escapeHtml(visual.alt || `Published source or output associated with ${dataset.name}`)}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async"><figcaption>${escapeHtml(visual.caption || 'Published evidence asset listed by this dataset record.')}</figcaption></figure>` : ''}
       <h2>Evidence boundary</h2>
       <p class="evidence-boundary">${escapeHtml(dataset.measurementTechnique)}</p>
       <h2>Measured variables</h2>
@@ -379,16 +433,108 @@ for (const dataset of catalog.datasets) {
 }
 
 const sitemapUrls = [
-  { url: `${siteUrl}/`, lastmod: catalog.lastUpdated },
-  ...catalog.datasets.map((dataset) => ({ url: datasetUrl(dataset), lastmod: dataset.dateModified })),
+  {
+    url: `${siteUrl}/`,
+    lastmod: catalog.lastUpdated,
+    images: [
+      `${siteUrl}/assets/multi-face-mapping-output-v1.webp`,
+      `${siteUrl}/assets/photo-pose-output-neutral-v1.avif`,
+      `${siteUrl}/assets/video-continuity-output-poster-v1.webp`,
+    ],
+  },
+  ...catalog.datasets.map((dataset) => ({
+    url: datasetUrl(dataset),
+    lastmod: dataset.dateModified,
+    images: localVisuals[dataset.identifier]
+      ? [`${siteUrl}/assets/${localVisuals[dataset.identifier].file}`]
+      : [],
+  })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapUrls.map(({ url, lastmod }) => `  <url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${sitemapUrls.map(({ url, lastmod, images }) => `  <url><loc>${url}</loc><lastmod>${lastmod}</lastmod>${images.map((image) => `<image:image><image:loc>${image}</image:loc></image:image>`).join('')}</url>`).join('\n')}
 </urlset>\n`;
 await writeFile(new URL('sitemap.xml', output), sitemap);
 await writeFile(new URL('sitemap.txt', output), `${sitemapUrls.map(({ url }) => url).join('\n')}\n`);
 await writeFile(new URL('robots.txt', output), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\nSitemap: ${siteUrl}/sitemap.txt\n`);
+
+const feed = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>${siteUrl}/</id>
+  <title>${escapeHtml(catalog.name)}</title>
+  <subtitle>${escapeHtml(catalog.description)}</subtitle>
+  <updated>${catalog.lastUpdated}T00:00:00Z</updated>
+  <link rel="self" type="application/atom+xml" href="${feedUrl}"/>
+  <link rel="alternate" type="text/html" href="${siteUrl}/"/>
+  <author><name>FaceSwapAI Editorial</name><uri>https://faceswapai.com/press#editorial-standards</uri></author>
+  <rights>CC BY 4.0, subject to the archive rights and evidence notice.</rights>
+${catalog.datasets.map((dataset) => `  <entry>
+    <id>${datasetUrl(dataset)}#dataset</id>
+    <title>${escapeHtml(dataset.name)}</title>
+    <link rel="alternate" type="text/html" href="${datasetUrl(dataset)}"/>
+    <link rel="enclosure" type="${escapeHtml(dataset.encodingFormat)}" href="${mirrorUrl(dataset)}"/>
+    <published>${dataset.datePublished}T00:00:00Z</published>
+    <updated>${dataset.dateModified}T00:00:00Z</updated>
+    <summary>${escapeHtml(dataset.description)}</summary>
+${dataset.keywords.map((keyword) => `    <category term="${escapeHtml(keyword)}"/>`).join('\n')}
+  </entry>`).join('\n')}
+</feed>\n`;
+await writeFile(new URL('feed.xml', output), feed);
+
+const dcatCatalog = {
+  '@context': {
+    dcat: 'http://www.w3.org/ns/dcat#',
+    dct: 'http://purl.org/dc/terms/',
+    foaf: 'http://xmlns.com/foaf/0.1/',
+    xsd: 'http://www.w3.org/2001/XMLSchema#',
+  },
+  '@id': `${siteUrl}/#catalog`,
+  '@type': 'dcat:Catalog',
+  'dct:title': catalog.name,
+  'dct:description': catalog.description,
+  'dct:identifier': catalog.identifier,
+  'dct:modified': { '@value': catalog.lastUpdated, '@type': 'xsd:date' },
+  'dct:license': { '@id': catalog.license },
+  'dct:publisher': {
+    '@id': organizationId,
+    '@type': 'foaf:Organization',
+    'foaf:name': 'FaceSwapAI',
+    'foaf:homepage': { '@id': 'https://faceswapai.com/' },
+  },
+  'dcat:landingPage': { '@id': `${siteUrl}/` },
+  'dcat:dataset': catalog.datasets.map((dataset) => ({
+    '@id': `${datasetUrl(dataset)}#dataset`,
+    '@type': 'dcat:Dataset',
+    'dct:title': dataset.name,
+    'dct:description': dataset.description,
+    'dct:identifier': dataset.identifier,
+    'dct:issued': { '@value': dataset.datePublished, '@type': 'xsd:date' },
+    'dct:modified': { '@value': dataset.dateModified, '@type': 'xsd:date' },
+    'dct:license': { '@id': dataset.license },
+    'dct:creator': { '@id': organizationId },
+    'dcat:keyword': dataset.keywords,
+    'dcat:landingPage': { '@id': datasetUrl(dataset) },
+    'foaf:page': { '@id': dataset.landingPage },
+    'dct:relation': dataset.isBasedOn.map((url) => ({ '@id': url })),
+    'dcat:distribution': [
+      {
+        '@type': 'dcat:Distribution',
+        'dct:title': 'GitHub Pages JSON mirror',
+        'dct:format': dataset.encodingFormat,
+        'dcat:accessURL': { '@id': datasetUrl(dataset) },
+        'dcat:downloadURL': { '@id': mirrorUrl(dataset) },
+      },
+      {
+        '@type': 'dcat:Distribution',
+        'dct:title': 'Canonical FaceSwapAI JSON download',
+        'dct:format': dataset.encodingFormat,
+        'dcat:accessURL': { '@id': dataset.landingPage },
+        'dcat:downloadURL': { '@id': dataset.download },
+      },
+    ],
+  })),
+};
+await writeFile(new URL('catalog/research-catalog-dcat.jsonld', output), `${JSON.stringify(dcatCatalog, null, 2)}\n`);
 
 const llms = `# FaceSwapAI Open Research Catalog
 
@@ -397,6 +543,8 @@ const llms = `# FaceSwapAI Open Research Catalog
 - Catalog: ${siteUrl}/
 - Canonical publication: ${catalog.canonicalUrl}
 - Catalog JSON: ${siteUrl}/catalog/research-catalog-v1.json
+- DCAT JSON-LD: ${dcatUrl}
+- Atom feed: ${feedUrl}
 - Citation: ${siteUrl}/CITATION.cff
 - Checksums: ${siteUrl}/SHA256SUMS
 - Repository: ${repositoryUrl}

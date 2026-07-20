@@ -9,6 +9,8 @@ a public correction history.
 
 - Canonical catalog: <https://faceswapai.com/research>
 - Browsable archive: <https://yan555999.github.io/faceswapai-open-research/>
+- DCAT JSON-LD: <https://yan555999.github.io/faceswapai-open-research/catalog/research-catalog-dcat.jsonld>
+- Atom updates: <https://yan555999.github.io/faceswapai-open-research/feed.xml>
 - Public workflow examples and output evaluation checklist: <https://faceswapai.com/face-swap-examples>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
@@ -35,8 +37,9 @@ provides a machine-readable inventory of the mirrored resources.
 
 The [browsable archive](https://yan555999.github.io/faceswapai-open-research/)
 publishes a self-contained record for every dataset, Dataset JSON-LD, mirrored
-downloads, a sitemap and citation metadata. It is a publisher-controlled mirror,
-not an independent review or endorsement.
+downloads, image-aware XML and text sitemaps, a DCAT catalog, an Atom feed and
+citation metadata. It is a publisher-controlled mirror, not an independent
+review or endorsement.
 
 ## Integrity and release policy
 
