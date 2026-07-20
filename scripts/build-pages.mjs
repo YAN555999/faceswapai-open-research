@@ -127,6 +127,12 @@ const catalogSchema = {
     url: datasetUrl(dataset),
     sameAs: dataset.landingPage,
     version: dataset.version,
+    license: dataset.license,
+    creator: {
+      '@type': 'Organization',
+      name: catalog.publisher.name,
+      url: catalog.publisher.url,
+    },
   })),
 };
 

@@ -30,6 +30,8 @@ assert.ok(schemaMatch, 'Catalog JSON-LD is missing');
 const catalogSchema = JSON.parse(schemaMatch[1]);
 assert.equal(catalogSchema['@type'], 'DataCatalog');
 assert.equal(catalogSchema.hasPart.length, catalog.datasetCount);
+assert.ok(catalogSchema.hasPart.every((dataset) => dataset.license === catalog.license));
+assert.ok(catalogSchema.hasPart.every((dataset) => dataset.creator?.name === catalog.publisher.name));
 
 for (const dataset of catalog.datasets) {
   assert.match(index, new RegExp(dataset.identifier.replaceAll('.', '\\.')));
