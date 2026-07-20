@@ -14,6 +14,7 @@ const catalog = JSON.parse(await readSource('catalog/research-catalog-v1.json'))
 const index = await textSite('index.html');
 
 assert.match(index, new RegExp(`<link rel="canonical" href="${siteUrl}/">`));
+assert.match(index, /<meta name="google-site-verification" content="NUMquWSbyXOwJSNRPxq7kp_LCszL6N9VbVuXMoy3d0A">/);
 assert.doesNotMatch(index, /<link rel="canonical" href="https:\/\/faceswapai\.com/);
 assert.match(index, /<script type="application\/ld\+json">/);
 assert.match(index, /Publisher-controlled research mirror/);

@@ -7,6 +7,7 @@ const repositoryUrl = 'https://github.com/YAN555999/faceswapai-open-research';
 const releaseUrl = `${repositoryUrl}/releases/tag/v1.2.0`;
 const softwareHeritageUrl = 'https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732';
 const socialImage = 'https://faceswapai.com/research/photo-pose-study-v1.jpg';
+const googleSiteVerification = 'NUMquWSbyXOwJSNRPxq7kp_LCszL6N9VbVuXMoy3d0A';
 
 const readText = (path) => readFile(new URL(path, root), 'utf8');
 const catalog = JSON.parse(await readText('catalog/research-catalog-v1.json'));
@@ -56,6 +57,7 @@ function documentHead({ title, description, canonical, image = socialImage, type
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="${googleSiteVerification}">
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
