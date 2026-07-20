@@ -60,9 +60,14 @@ const sitemap = await textSite('sitemap.xml');
 assert.equal((sitemap.match(/<url>/g) || []).length, catalog.datasetCount + 1);
 assert.ok(catalog.datasets.every((dataset) => sitemap.includes(`${siteUrl}/datasets/${dataset.identifier}/`)));
 
+const textSitemap = await textSite('sitemap.txt');
+assert.equal(textSitemap.trim().split('\n').length, catalog.datasetCount + 1);
+assert.ok(catalog.datasets.every((dataset) => textSitemap.includes(`${siteUrl}/datasets/${dataset.identifier}/`)));
+
 const robots = await textSite('robots.txt');
 assert.match(robots, /User-agent: \*/);
 assert.match(robots, new RegExp(`Sitemap: ${siteUrl}/sitemap\\.xml`));
+assert.match(robots, new RegExp(`Sitemap: ${siteUrl}/sitemap\\.txt`));
 
 const llms = await textSite('llms.txt');
 assert.match(llms, /Publisher-controlled mirror/);

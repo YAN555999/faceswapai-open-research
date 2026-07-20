@@ -387,7 +387,8 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 ${sitemapUrls.map(({ url, lastmod }) => `  <url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}
 </urlset>\n`;
 await writeFile(new URL('sitemap.xml', output), sitemap);
-await writeFile(new URL('robots.txt', output), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
+await writeFile(new URL('sitemap.txt', output), `${sitemapUrls.map(({ url }) => url).join('\n')}\n`);
+await writeFile(new URL('robots.txt', output), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\nSitemap: ${siteUrl}/sitemap.txt\n`);
 
 const llms = `# FaceSwapAI Open Research Catalog
 
