@@ -15,7 +15,7 @@ a public correction history.
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
 - Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.3.0>
-- Latest independently preserved release: `v1.2.0` at <https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732>
+- Latest independently preserved release: `v1.3.0` at <https://archive.softwareheritage.org/swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
 ## Included datasets
@@ -79,15 +79,16 @@ Preserve the artifact SHA-256 when exact reproduction matters.
 
 ## Independent preservation
 
-Software Heritage independently archived the repository state containing release
-`v1.2.0` on 2026-07-16. This is the latest verified independent snapshot while
-the `v1.3.0` visit is pending. Its persistent snapshot identifier is
-[`swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732`](https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732).
+Software Heritage independently archived the repository state containing the
+immutable `v1.3.0` tag on 2026-07-20. Its persistent snapshot identifier is
+[`swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc`](https://archive.softwareheritage.org/swh:1:snp:d2b86adb1ed3236cc2bf9caac70b4079bbbfdbdc).
 A GitHub push webhook requests a fresh Software Heritage visit after subsequent
 repository updates.
 
 The SWHID preserves repository history independently. The release manifest and
 `SHA256SUMS` remain the exact integrity records for downloadable release artifacts.
+The immutable `v1.3.0` citation attachment records the previously verified
+`v1.2.0` SWHID because the new snapshot was created after the tag was published.
 
 ## Corrections and reuse
 
