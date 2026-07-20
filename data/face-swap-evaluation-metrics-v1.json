@@ -1,0 +1,294 @@
+{
+  "name": "Face Swap Evaluation Metric Crosswalk v1",
+  "identifier": "faceswapai-face-swap-evaluation-metric-crosswalk-v1.0.0",
+  "version": "1.0.0",
+  "dateObserved": "2026-07-20",
+  "datePublished": "2026-07-20",
+  "canonicalUrl": "https://faceswapai.com/datasets/face-swap-evaluation-metrics-v1.json",
+  "humanReadableRecord": "https://faceswapai.com/resources/how-to-evaluate-face-swap-quality",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "name": "FaceSwapAI Editorial",
+    "url": "https://faceswapai.com/press#editorial-standards"
+  },
+  "purpose": "Separate nine commonly cited face-swap evaluation measurements by reference, direction, aggregation level, required evidence and interpretation limit.",
+  "scope": {
+    "metricCount": 9,
+    "subject": "Face-swap output evaluation and deepfake-detector interpretation",
+    "primaryGenerationBenchmark": "CASIA FaceSwapping benchmark published with arXiv:2605.00883",
+    "detectorGeneralizationReference": "Real-World FaceSwap dataset study published as arXiv:2502.10920",
+    "providerLeaderboard": false,
+    "faceSwapAIProductionScoresPublished": false,
+    "generatedMediaIncluded": false
+  },
+  "method": {
+    "sourceBoundary": "Metric definitions and protocol roles were normalized from the cited primary papers and official benchmark repositories. No third-party leaderboard values were copied.",
+    "normalizationRules": [
+      "Every metric names the reference object it compares with the output.",
+      "Sample-level, video-level and dataset-level measurements remain distinct.",
+      "Higher or lower direction is stated only inside the documented protocol.",
+      "Identity transfer is kept separate from target-attribute preservation.",
+      "Distribution similarity is not converted into a score for one image.",
+      "Detector performance or confidence is not presented as perceptual realism, identity fidelity or generation quality.",
+      "No metric value is attributed to FaceSwapAI unless a reproducible production measurement has been published."
+    ]
+  },
+  "metrics": [
+    {
+      "id": "id-retrieval",
+      "name": "Identity Retrieval",
+      "family": "identity transfer",
+      "evaluationLevel": "dataset",
+      "comparison": "Output face features against a labeled gallery of source identities",
+      "reference": "Source identity gallery",
+      "direction": "higher",
+      "requiredEvidence": [
+        "identity encoder",
+        "gallery construction",
+        "face crop and alignment",
+        "pair protocol",
+        "sample count"
+      ],
+      "answers": "How often the correct source identity is retrieved at the stated rank under one fixed protocol.",
+      "doesNotAnswer": "Whether one person is definitively identified, whether the output looks realistic or whether target attributes were preserved.",
+      "primarySources": [
+        "https://arxiv.org/abs/2605.00883",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "id-similarity",
+      "name": "Identity Similarity",
+      "family": "identity transfer",
+      "evaluationLevel": "sample and dataset aggregate",
+      "comparison": "Source and output face embeddings",
+      "reference": "Source identity",
+      "direction": "higher",
+      "requiredEvidence": [
+        "identity encoder",
+        "similarity function",
+        "face crop and alignment",
+        "pair protocol",
+        "aggregation rule"
+      ],
+      "answers": "How close the source and output features are under one stated recognition encoder.",
+      "doesNotAnswer": "Target pose, expression, background preservation, perceptual realism or an identity claim independent of the encoder.",
+      "primarySources": [
+        "https://arxiv.org/abs/2605.00883",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "pose-error",
+      "name": "Pose Error",
+      "family": "target-attribute preservation",
+      "evaluationLevel": "sample and dataset aggregate",
+      "comparison": "Estimated output head pose against estimated target head pose",
+      "reference": "Target pose",
+      "direction": "lower",
+      "requiredEvidence": [
+        "pose estimator",
+        "angle or parameter representation",
+        "distance function",
+        "face crop",
+        "aggregation rule"
+      ],
+      "answers": "How closely the output follows target head orientation under the stated estimator.",
+      "doesNotAnswer": "Source identity fidelity, expression preservation or visual integration.",
+      "primarySources": [
+        "https://arxiv.org/abs/2605.00883",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "expression-error",
+      "name": "Expression Error",
+      "family": "target-attribute preservation",
+      "evaluationLevel": "sample and dataset aggregate",
+      "comparison": "Estimated output expression parameters against estimated target expression parameters",
+      "reference": "Target expression",
+      "direction": "lower",
+      "requiredEvidence": [
+        "expression estimator",
+        "parameter representation",
+        "distance function",
+        "face crop",
+        "aggregation rule"
+      ],
+      "answers": "How closely the output follows target expression under the stated estimator.",
+      "doesNotAnswer": "Source identity fidelity, pose preservation, lip synchronization or naturalness.",
+      "primarySources": [
+        "https://arxiv.org/abs/2605.00883",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "fid",
+      "name": "Frechet Inception Distance",
+      "family": "distribution similarity",
+      "evaluationLevel": "dataset",
+      "comparison": "Feature distribution of generated outputs against a stated reference distribution",
+      "reference": "Reference image set",
+      "direction": "lower",
+      "requiredEvidence": [
+        "generated and reference sets",
+        "sample count",
+        "feature extractor",
+        "preprocessing",
+        "implementation"
+      ],
+      "answers": "How close two feature distributions are under one implementation and sampling protocol.",
+      "doesNotAnswer": "The quality of one image, source identity transfer or target-attribute preservation.",
+      "primarySources": [
+        "https://proceedings.neurips.cc/paper/2017/hash/8a1d694707eb0fefe65871369074926d-Abstract.html",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "ssim",
+      "name": "Structural Similarity",
+      "family": "paired structural similarity",
+      "evaluationLevel": "sample and dataset aggregate",
+      "comparison": "Aligned output against a corresponding protocol reference or ground truth",
+      "reference": "Paired aligned reference",
+      "direction": "higher",
+      "requiredEvidence": [
+        "corresponding reference",
+        "alignment",
+        "window parameters",
+        "color representation",
+        "aggregation rule"
+      ],
+      "answers": "How similar aligned luminance, contrast and structure are under the stated setup.",
+      "doesNotAnswer": "Source identity transfer, unpaired realism or whether a minimally changed target is a successful swap.",
+      "primarySources": [
+        "https://doi.org/10.1109/TIP.2003.819861",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "subject-consistency",
+      "name": "Subject Consistency",
+      "family": "video temporal stability",
+      "evaluationLevel": "video and dataset aggregate",
+      "comparison": "Subject features across frames of the generated video",
+      "reference": "Other sampled frames in the same output video",
+      "direction": "higher",
+      "requiredEvidence": [
+        "complete output video",
+        "temporal feature extractor",
+        "sampling policy",
+        "clip boundaries",
+        "aggregation rule"
+      ],
+      "answers": "How stable subject features remain over time under the stated video evaluator.",
+      "doesNotAnswer": "Whether the subject matches the source identity, whether lip sync is correct or whether every frame is artifact-free.",
+      "primarySources": [
+        "https://github.com/Vchitect/VBench",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "background-consistency",
+      "name": "Background Consistency",
+      "family": "video temporal stability",
+      "evaluationLevel": "video and dataset aggregate",
+      "comparison": "Background features across frames of the generated video",
+      "reference": "Other sampled frames in the same output video",
+      "direction": "higher",
+      "requiredEvidence": [
+        "complete output video",
+        "temporal feature extractor",
+        "sampling policy",
+        "clip boundaries",
+        "aggregation rule"
+      ],
+      "answers": "How stable scene-background features remain over time under the stated video evaluator.",
+      "doesNotAnswer": "Whether non-face pixels are unchanged, whether the swapped face is correct or whether source identity is stable.",
+      "primarySources": [
+        "https://github.com/Vchitect/VBench",
+        "https://github.com/CASIA-NLPRAI/face-swapping-survey"
+      ]
+    },
+    {
+      "id": "detector-performance",
+      "name": "Deepfake Detector AUROC or Confidence",
+      "family": "forensic detection",
+      "evaluationLevel": "dataset for AUROC; individual detector output for confidence",
+      "comparison": "Detector predictions against labeled real and manipulated samples",
+      "reference": "Labeled detector test set",
+      "direction": "higher AUROC is better detector discrimination; per-output confidence has no universal generation-quality direction",
+      "requiredEvidence": [
+        "detector model and weights",
+        "labeled test set",
+        "domain and post-processing",
+        "class balance",
+        "metric implementation"
+      ],
+      "answers": "How one detector separates labeled classes on the stated distribution, or how that detector scores one output.",
+      "doesNotAnswer": "Perceptual realism, identity fidelity, consent, safety or quality across another detector or post-processing pipeline.",
+      "primarySources": [
+        "https://arxiv.org/abs/2502.10920"
+      ]
+    }
+  ],
+  "reviewChecklist": [
+    "Name the output, source, target, gallery or reference set used by each metric.",
+    "Publish evaluator versions, preprocessing, sample counts and aggregation rules.",
+    "Keep raw directions and values instead of silently collapsing unlike metrics into one score.",
+    "Add blinded human review for identity, target attributes, integration, occlusion and normal-speed video continuity.",
+    "Report failures, exclusions and unavailable outputs instead of replacing them silently.",
+    "Re-run a protocol after a material model, provider or preprocessing change."
+  ],
+  "officialReferences": [
+    {
+      "title": "Towards High Fidelity Face Swapping: A Comprehensive Survey and New Benchmark",
+      "publisher": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2605.00883",
+      "role": "Primary face-swapping benchmark and eight-metric protocol."
+    },
+    {
+      "title": "CASIA FaceSwapping benchmark repository",
+      "publisher": "CASIA-NLPRAI",
+      "year": "2026",
+      "url": "https://github.com/CASIA-NLPRAI/face-swapping-survey",
+      "role": "Pair protocols, evaluator implementations and metric directions."
+    },
+    {
+      "title": "Do Deepfake Detectors Work in Reality?",
+      "publisher": "arXiv",
+      "year": "2025",
+      "url": "https://arxiv.org/abs/2502.10920",
+      "role": "Evidence that detector generalization changes under real-world domain shift and super-resolution post-processing."
+    },
+    {
+      "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium",
+      "publisher": "Advances in Neural Information Processing Systems",
+      "year": "2017",
+      "url": "https://proceedings.neurips.cc/paper/2017/hash/8a1d694707eb0fefe65871369074926d-Abstract.html",
+      "role": "Original Frechet Inception Distance source."
+    },
+    {
+      "title": "Image Quality Assessment: From Error Visibility to Structural Similarity",
+      "publisher": "IEEE Transactions on Image Processing",
+      "year": "2004",
+      "url": "https://doi.org/10.1109/TIP.2003.819861",
+      "role": "Original Structural Similarity source."
+    },
+    {
+      "title": "VBench: Comprehensive Benchmark Suite for Video Generative Models",
+      "publisher": "Vchitect",
+      "year": "2024",
+      "url": "https://github.com/Vchitect/VBench",
+      "role": "Evaluator used for subject and background consistency in the CASIA benchmark."
+    }
+  ],
+  "limitations": [
+    "This crosswalk is a dated reading aid, not a provider leaderboard, model certification or claim that one metric suite is sufficient for every use case.",
+    "The dataset contains definitions and interpretation boundaries, not generated faces, private media, embeddings, model weights or benchmark scores.",
+    "Metric implementations can differ from the cited examples; values are comparable only when the complete protocol matches.",
+    "The cited papers and repositories describe their own datasets and evaluators, not FaceSwapAI production quality.",
+    "Human preference, accessibility, consent, legal rights and publication context are separate decisions that numeric quality metrics do not settle."
+  ]
+}

@@ -14,8 +14,8 @@ a public correction history.
 - Public workflow examples and output evaluation checklist: <https://faceswapai.com/face-swap-examples>
 - Machine-readable catalog: <https://faceswapai.com/research-catalog-v1.json>
 - Editorial and correction standard: <https://faceswapai.com/press#editorial-standards>
-- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.2.0>
-- Independent preservation: <https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732>
+- Versioned release: <https://github.com/YAN555999/faceswapai-open-research/releases/tag/v1.3.0>
+- Latest independently preserved release: `v1.2.0` at <https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732>
 - License: [CC BY 4.0](LICENSE), subject to the boundaries in [NOTICE.md](NOTICE.md)
 
 ## Included datasets
@@ -25,6 +25,7 @@ a public correction history.
 | Independent Multi-Face Mapping Production Study v1 | One dated production run on one purpose-built synthetic four-adult image | [Method and limitations](https://faceswapai.com/resources/how-to-map-different-faces-in-a-group-photo) | [`data/independent-multi-face-mapping-study-v1.json`](data/independent-multi-face-mapping-study-v1.json) |
 | AI Face Swap Vendor-Published Claims Snapshot v1 | Normalized statements observed on seven official product pages; not an output-quality test | [Sources and field definitions](https://faceswapai.com/resources/how-to-compare-ai-face-swap-tools) | [`data/ai-face-swap-public-claims-v1.json`](data/ai-face-swap-public-claims-v1.json) |
 | Face Swap Privacy and Consent Decision Matrix v1 | Editorial decision aid based on current product facts and selected official guidance; not legal advice or a security or training-use audit | [Sources, questions and limitations](https://faceswapai.com/resources/face-swap-safety-and-consent) | [`data/face-swap-privacy-checklist-v1.json`](data/face-swap-privacy-checklist-v1.json) |
+| Face Swap Evaluation Metric Crosswalk v1 | Nine primary-source measurement families with directions, evidence requirements and interpretation limits; not provider scores or a leaderboard | [Metric definitions and review protocol](https://faceswapai.com/resources/how-to-evaluate-face-swap-quality) | [`data/face-swap-evaluation-metrics-v1.json`](data/face-swap-evaluation-metrics-v1.json) |
 | Controlled Production Photo Face-Swap Pose Study | Four paid production image tasks using one synthetic source and four synthetic target states | [Method, exact outputs and limitations](https://faceswapai.com/resources/photo-face-swap-pose-study) | [`data/photo-pose-study-v1.json`](data/photo-pose-study-v1.json) |
 | Public Reference Frame Readiness Benchmark | Public reference-frame audit using the published Readiness Score method | [Method and sample boundary](https://faceswapai.com/resources/face-swap-input-readiness-benchmark) | [`data/readiness-benchmark-v1.json`](data/readiness-benchmark-v1.json) |
 | Controlled Face-Swap Input Degradation Study | Single-variable image degradations measured with the public score and production detector | [Design and limitations](https://faceswapai.com/resources/face-swap-input-degradation-study) | [`data/input-degradation-study-v1.json`](data/input-degradation-study-v1.json) |
@@ -71,7 +72,7 @@ using a result outside its stated scope.
 
 Use the repository's [`CITATION.cff`](CITATION.cff) metadata or cite:
 
-> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.2.0). <https://faceswapai.com/research>
+> FaceSwapAI Editorial (2026). *FaceSwapAI Face Swap Research and Open Data Catalog* (Version 1.3.0). <https://faceswapai.com/research>
 
 When using one dataset, cite its canonical landing page, identifier and version.
 Preserve the artifact SHA-256 when exact reproduction matters.
@@ -79,7 +80,8 @@ Preserve the artifact SHA-256 when exact reproduction matters.
 ## Independent preservation
 
 Software Heritage independently archived the repository state containing release
-`v1.2.0` on 2026-07-16. Its persistent snapshot identifier is
+`v1.2.0` on 2026-07-16. This is the latest verified independent snapshot while
+the `v1.3.0` visit is pending. Its persistent snapshot identifier is
 [`swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732`](https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732).
 A GitHub push webhook requests a fresh Software Heritage visit after subsequent
 repository updates.

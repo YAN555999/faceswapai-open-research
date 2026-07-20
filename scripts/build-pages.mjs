@@ -4,7 +4,8 @@ const root = new URL('../', import.meta.url);
 const output = new URL('../_site/', import.meta.url);
 const siteUrl = 'https://yan555999.github.io/faceswapai-open-research';
 const repositoryUrl = 'https://github.com/YAN555999/faceswapai-open-research';
-const releaseUrl = `${repositoryUrl}/releases/tag/v1.2.0`;
+const releaseUrl = `${repositoryUrl}/releases/tag/v1.3.0`;
+const archivedReleaseTag = 'v1.2.0';
 const softwareHeritageUrl = 'https://archive.softwareheritage.org/swh:1:snp:0370cbb1b4a4b9b8f7e26b6d660b3c49ea950732';
 const socialImage = 'https://faceswapai.com/research/photo-pose-study-v1.jpg';
 const googleSiteVerification = 'NUMquWSbyXOwJSNRPxq7kp_LCszL6N9VbVuXMoy3d0A';
@@ -163,7 +164,7 @@ const catalogSchema = {
   name: catalog.name,
   description: catalog.description,
   url: `${siteUrl}/`,
-  sameAs: [catalog.canonicalUrl, repositoryUrl, softwareHeritageUrl],
+  sameAs: [catalog.canonicalUrl, repositoryUrl],
   dateModified: catalog.lastUpdated,
   version: catalog.version,
   license: catalog.license,
@@ -245,7 +246,7 @@ ${header()}
       <div class="fact"><strong>${catalog.datasetCount}</strong><span>versioned datasets</span></div>
       <div class="fact"><strong>13</strong><span>release checksums</span></div>
       <div class="fact"><strong>CC BY 4.0</strong><span>catalog license</span></div>
-      <div class="fact"><strong>SWHID</strong><span>independent preservation</span></div>
+      <div class="fact"><strong>${archivedReleaseTag}</strong><span>independent SWH snapshot</span></div>
     </div>
   </section>
   <div class="content">
@@ -265,7 +266,7 @@ ${header()}
     <section class="publisher-note" aria-labelledby="publisher-heading">
       <h2 id="publisher-heading">Publisher and evidence boundary</h2>
       <p>This GitHub Pages archive is controlled by <strong>FaceSwapAI Editorial</strong>. It provides an inspectable mirror and correction history; it is not an independent review, certification, model leaderboard or provider endorsement.</p>
-      <p>Canonical methods and limitations remain on <a href="${catalog.canonicalUrl}">FaceSwapAI Research</a>. Repository history is also preserved by <a href="${softwareHeritageUrl}">Software Heritage</a>.</p>
+      <p>Canonical methods and limitations remain on <a href="${catalog.canonicalUrl}">FaceSwapAI Research</a>. Software Heritage independently preserves the verified <a href="${softwareHeritageUrl}">${archivedReleaseTag} snapshot</a>; a fresh visit is requested for later releases.</p>
     </section>
     <section class="citation-panel" id="citation" aria-labelledby="citation-heading">
       <h2 id="citation-heading">Citation</h2>

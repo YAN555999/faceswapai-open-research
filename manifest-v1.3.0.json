@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0.0",
+  "release": "v1.3.0",
+  "published": "2026-07-20",
+  "repository": "https://github.com/YAN555999/faceswapai-open-research",
+  "canonicalCatalog": "https://faceswapai.com/research",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "artifactCount": 11,
+  "artifacts": [
+    {
+      "path": "catalog/research-catalog-v1.csv",
+      "bytes": 9314,
+      "sha256": "eb1989d9bb3514665e28c91611c0f17c0a9d9cbb8af844999c35921333dd04a6",
+      "source": "https://faceswapai.com/research-catalog-v1.csv"
+    },
+    {
+      "path": "catalog/research-catalog-v1.json",
+      "bytes": 16430,
+      "sha256": "a6af1c4f8b7ff19bc4b509728fe1267d50d6cbc8f0eb3de98ca925eae88d0c71",
+      "source": "https://faceswapai.com/research-catalog-v1.json"
+    },
+    {
+      "path": "data/ai-face-swap-public-claims-v1.json",
+      "bytes": 10074,
+      "sha256": "e5eead59d6d048a56a9bfa25a95c5ea1dca3bda5e0b76abd59e0b21de63658a8",
+      "source": "https://faceswapai.com/datasets/ai-face-swap-public-claims-v1.json"
+    },
+    {
+      "path": "data/face-swap-evaluation-metrics-v1.json",
+      "bytes": 13593,
+      "sha256": "23228179a2da2594c2ead9e1f8b2bca3c96dab16b01817c2ed93ab0a40ac6287",
+      "source": "https://faceswapai.com/datasets/face-swap-evaluation-metrics-v1.json"
+    },
+    {
+      "path": "data/face-swap-privacy-checklist-v1.json",
+      "bytes": 11863,
+      "sha256": "01d9cb1f74c05cfc1802f01922e852514714a37548bd9b3435a2923a9ecdbcf3",
+      "source": "https://faceswapai.com/datasets/face-swap-privacy-checklist-v1.json"
+    },
+    {
+      "path": "data/group-face-size-study-v1.json",
+      "bytes": 6305,
+      "sha256": "ea3de24c2cd7984766c7aea6f4bbe6da1203b771e93ff0d1f8e7381f9550bdcf",
+      "source": "https://faceswapai.com/group-face-size-study-v1.json"
+    },
+    {
+      "path": "data/independent-multi-face-mapping-study-v1.json",
+      "bytes": 5373,
+      "sha256": "4a6cc7c97d7abba92c666d4176c96fccdfd4c371ea50331884b04516dbc6c8b0",
+      "source": "https://faceswapai.com/datasets/independent-multi-face-mapping-study-v1.json"
+    },
+    {
+      "path": "data/input-degradation-study-v1.json",
+      "bytes": 6619,
+      "sha256": "a2b21413a2a7d70c2ed52f729b444892091033e38cd42aa052bd9df207a9e74d",
+      "source": "https://faceswapai.com/input-degradation-study-v1.json"
+    },
+    {
+      "path": "data/photo-pose-study-v1.json",
+      "bytes": 14073,
+      "sha256": "c9f54da3e523bda6dca106a2ba4d319c1d12deb48af7c9c8f8161e8456c388dc",
+      "source": "https://faceswapai.com/datasets/photo-pose-study-v1.json"
+    },
+    {
+      "path": "data/readiness-benchmark-v1.json",
+      "bytes": 4700,
+      "sha256": "313d1f5b0e564d11e56c93665b19522696161f52a67289f1517318ff2838b42a",
+      "source": "https://faceswapai.com/readiness-benchmark-v1.json"
+    },
+    {
+      "path": "data/video-continuity-study-v1.json",
+      "bytes": 12270,
+      "sha256": "e73ecc30c700b95246fa56977e6e596eb685035a16a0b19d72e9f14e76095e8c",
+      "source": "https://faceswapai.com/video-continuity-study-v1.json"
+    }
+  ]
+}
